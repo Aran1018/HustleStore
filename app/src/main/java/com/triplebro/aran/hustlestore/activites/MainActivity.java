@@ -9,6 +9,7 @@ import com.triplebro.aran.hustlestore.R;
 import com.triplebro.aran.hustlestore.databases.MyOpenHelper;
 import com.triplebro.aran.hustlestore.fragments.BottomFragment;
 import com.triplebro.aran.hustlestore.fragments.MainFragment;
+import com.triplebro.aran.hustlestore.utils.PermissionUtil;
 
 public class MainActivity extends Activity {
 
@@ -17,6 +18,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        PermissionUtil.requestPower(this, ((Activity) this), "android.permission.WRITE_EXTERNAL_STORAGE");
 
         MyOpenHelper myOpenHelper = new MyOpenHelper(this);
         FragmentManager fragmentManager = getFragmentManager();

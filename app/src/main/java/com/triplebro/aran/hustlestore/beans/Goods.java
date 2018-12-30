@@ -16,7 +16,7 @@ public class Goods {
 
 
     int user_id;
-    int goods_id;
+    String goods_id;
     String goods_name;
     String goods_price;
     String goods_label;
@@ -32,7 +32,7 @@ public class Goods {
     public Goods() {
     }
 
-    public Goods(int user_id, int goods_id, String goods_name, String goods_price, String goods_label, String user_Head, int goods_beLike, String goodsImg_mainpath, String goodsImg_sec1path, String goodsImg_sec2path, String goodsImg_sec3path, String goodsImg_sec4path) {
+    public Goods(int user_id, String goods_id, String goods_name, String goods_price, String goods_label, String user_Head, int goods_beLike, String goodsImg_mainpath, String goodsImg_sec1path, String goodsImg_sec2path, String goodsImg_sec3path, String goodsImg_sec4path) {
         this.user_id = user_id;
         this.goods_id = goods_id;
         this.goods_name = goods_name;
@@ -95,11 +95,11 @@ public class Goods {
         this.user_id = user_id;
     }
 
-    public int getGoods_id() {
+    public String getGoods_id() {
         return goods_id;
     }
 
-    public void setGoods_id(int goods_id) {
+    public void setGoods_id(String goods_id) {
         this.goods_id = goods_id;
     }
 

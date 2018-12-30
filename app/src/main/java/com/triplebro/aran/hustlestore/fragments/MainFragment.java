@@ -53,7 +53,7 @@ import java.util.List;
 
 
 @SuppressLint("NewApi")
-public class MainFragment extends Fragment implements ViewPager.OnPageChangeListener,View.OnScrollChangeListener,View.OnClickListener {
+public class MainFragment extends Fragment implements ViewPager.OnPageChangeListener, View.OnScrollChangeListener, View.OnClickListener {
 
     private View fragment_main;
     /**
@@ -129,8 +129,8 @@ public class MainFragment extends Fragment implements ViewPager.OnPageChangeList
         Scroller scroller = new Scroller(getActivity());
         scroller.setFriction(1000);
 
-        MainRecyclerVIewAdapter mainRecyclerVIewAdapter = new MainRecyclerVIewAdapter(getActivity(), new GoodsInfoManager(getActivity()).getGoodsList());
-        GridLayoutManager manager = new GridLayoutManager(getActivity(), 2){
+        MainRecyclerVIewAdapter mainRecyclerVIewAdapter = new MainRecyclerVIewAdapter(getActivity(), new GoodsInfoManager(getActivity()).getGoodsList(), new GoodsInfoManager(getActivity()).getGoodsImg(new GoodsInfoManager(getActivity()).getGoodsList()), new GoodsInfoManager(getActivity()).getUserName(new GoodsInfoManager(getActivity()).getGoodsList()));
+        GridLayoutManager manager = new GridLayoutManager(getActivity(), 2) {
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -167,16 +167,16 @@ public class MainFragment extends Fragment implements ViewPager.OnPageChangeList
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
 
             case R.id.bt_serch:
-                Toast.makeText(getActivity(),"搜索",Toast.LENGTH_LONG);
+                Toast.makeText(getActivity(), "搜索", Toast.LENGTH_LONG);
                 break;
         }
     }
 
 
-     private void initTimeUtils() {
+    private void initTimeUtils() {
         new Thread() {
             public void run() {
                 isRunning = true;
@@ -193,7 +193,7 @@ public class MainFragment extends Fragment implements ViewPager.OnPageChangeList
     }
 
 
-    private void initImageList(){
+    private void initImageList() {
         imageResIds = new int[]{
                 R.mipmap.goods_example,
                 R.mipmap.goods_example,
@@ -271,7 +271,7 @@ public class MainFragment extends Fragment implements ViewPager.OnPageChangeList
     }
 
 
-    private void ScaledownAnimationUtils(View view){
+    private void ScaledownAnimationUtils(View view) {
         AnimationUtils.ScaledownAnimationUtils(view);
         AnimationisRunned = true;
     }

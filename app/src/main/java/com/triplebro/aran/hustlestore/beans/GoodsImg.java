@@ -13,7 +13,7 @@ package com.triplebro.aran.hustlestore.beans;
 
 public class GoodsImg {
     int goodsImgId;
-    int goodsId;
+    String goodsId;
     String goodsImg_mainpath;
     String goodsImg_sec1path;
     String goodsImg_sec2path;
@@ -21,7 +21,7 @@ public class GoodsImg {
     String goodsImg_sec4path;
 
 
-    public GoodsImg(int goodsImgId, int goodsId, String goodsImg_mainpath, String goodsImg_sec1path, String goodsImg_sec2path, String goodsImg_sec3path, String goodsImg_sec4path) {
+    public GoodsImg(int goodsImgId, String goodsId, String goodsImg_mainpath, String goodsImg_sec1path, String goodsImg_sec2path, String goodsImg_sec3path, String goodsImg_sec4path) {
 
         this.goodsImgId = goodsImgId;
         this.goodsId = goodsId;
@@ -75,11 +75,11 @@ public class GoodsImg {
         this.goodsImgId = goodsImgId;
     }
 
-    public int getGoodsId() {
+    public String getGoodsId() {
         return goodsId;
     }
 
-    public void setGoodsId(int goodsId) {
+    public void setGoodsId(String goodsId) {
         this.goodsId = goodsId;
     }
 

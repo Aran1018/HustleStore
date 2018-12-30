@@ -16,14 +16,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 
 public class MyOpenHelper extends SQLiteOpenHelper {
+
     private static final String DATABASE_NAME = "YiAPP.db";//数据库名字
     private static final int DATABASE_VERSION = 1;//数据库版本号
 
     //用户表
     private static final String CREATE_TABLE_USERINFO = "" +
             "create table userInfo(" +
-            "id integer primary key autoincrement," +
-            "user_id VARCHAR(20), " +
+            "user_id VARCHAR(20) primary key, " +
             "user_name VARCHAR(20), " +
             "pass_word VARCHAR(20)," +
             "user_introduction VARCHAR(200)," +
@@ -31,10 +31,10 @@ public class MyOpenHelper extends SQLiteOpenHelper {
             ")";
     private static final String CREATE_TABLE_GOODSINFO = "" +
             "create table goodsInfo(" +
-            "id integer primary key autoincrement," +
             "user_id VARCHAR(20)," +
-            "goods_id VARCHAR(20), " +
+            "goods_id VARCHAR(50) primary key, " +
             "goods_name VARCHAR(200), " +
+            "goods_count VARCHAR(200), " +
             "goods_price VARCHAR(20)," +
             "goods_label VARCHAR(20),"  +
             "user_Head VARCHAR(200)," +
@@ -49,8 +49,28 @@ public class MyOpenHelper extends SQLiteOpenHelper {
             "goodsImg_sec2path VARCHAR(200)," +
             "goodsImg_sec3path VARCHAR(200)," +
             "goodsImg_sec4path VARCHAR(200)," +
-            "goods_id VARCHAR(20), " +
+            "goods_id VARCHAR(50), " +
             "FOREIGN KEY (goods_id) REFERENCES goodsInfo(goods_id)" +
+            ")";
+    private static final String CREATE_TABLE_PUBLISHCONTENT = "" +
+            "create table PublishContent(" +
+            "publish_id integer primary key autoincrement, " +
+            "user_id VARCHAR(200)," +
+            "publish_content VARCHAR(300)," +
+            "content_img VARCHAR(50)," +
+            "publish_time VARCHAR(200)," +
+            "great_number integer," +
+            "FOREIGN KEY (user_id) REFERENCES userInfo(user_id)" +
+            ")";
+    private static final String CREATE_TABLE_COMMENTS = "" +
+            "create table Comments(" +
+            "comments_id integer primary key autoincrement, " +
+            "publish_id integer," +
+            "user_id VARCHAR(300)," +
+            "comments_content VARCHAR(50)," +
+            "comments_date VARCHAR(200),"+
+            "FOREIGN KEY (user_id) REFERENCES userInfo(user_id)" +
+            "FOREIGN KEY (publish_id) REFERENCES PublishContent(publish_id)" +
             ")";
 
     public MyOpenHelper(Context context) {
@@ -64,11 +84,22 @@ public class MyOpenHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_GOODSINFO);
         db.execSQL(CREATE_TABLE_USERINFO);
         db.execSQL(CREATE_TABLE_GOODSIMG);
+        db.execSQL(CREATE_TABLE_PUBLISHCONTENT);
+        db.execSQL(CREATE_TABLE_COMMENTS);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
+        if (!db.isReadOnly()) {
+            // Enable foreign key constraints 开启外键约束
+            db.execSQL("PRAGMA foreign_keys=ON;");
+        }
     }
 }

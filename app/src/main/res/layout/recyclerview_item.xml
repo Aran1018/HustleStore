@@ -14,8 +14,8 @@
     <ImageView
         android:id="@+id/iv_goodsimg"
         android:src="@mipmap/goods_example"
-        android:layout_width="match_parent"
-        android:layout_height="130dp" />
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,8 +44,8 @@
             android:gravity="left"
             android:layout_width="0dp"
             android:layout_height="match_parent">
-            <com.triplebro.aran.hustlestore.widget.RoundImageView
-                android:id="@+id/rv_userImg"
+            <ImageView
+                android:id="@+id/iv_userHead"
                 android:src="@drawable/user_img"
                 android:layout_width="20dp"
                 android:layout_height="20dp" />

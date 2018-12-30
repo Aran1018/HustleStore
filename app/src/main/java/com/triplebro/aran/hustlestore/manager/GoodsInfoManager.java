@@ -55,7 +55,7 @@ public class GoodsInfoManager {
             while (goodsInfoCursor.moveToNext()){
                 Goods goods = new Goods();
                 goods.setUser_id(goodsInfoCursor.getInt(0));
-                goods.setGoods_id(goodsInfoCursor.getInt(1));
+                goods.setGoods_id(goodsInfoCursor.getString(1));
                 goods.setGoods_name(goodsInfoCursor.getString(2));
                 goods.setGoods_price(goodsInfoCursor.getString(3));
                 goods.setGoods_label(goodsInfoCursor.getString(4));
@@ -76,18 +76,22 @@ public class GoodsInfoManager {
         SQLiteDatabase readableDatabase = myOpenHelper.getReadableDatabase();
         for (Goods goods: list) {
             Cursor goodsImgCursor = readableDatabase.query("goodsImg",
-                    new String[]{"goodsImg_mainpath"}, "goods_id = ?", new String[]{String.valueOf(goods.getUser_id())},
+                    new String[]{"goodsImg_mainpath"}, "goods_id = ?", new String[]{String.valueOf(goods.getGoods_id())},
                     null, null, null, null);
             if (goodsImgCursor!=null && goodsImgCursor.getCount()>0){
                 while (goodsImgCursor.moveToNext()){
                     GoodsImg goodsImg = new GoodsImg();
-                    goodsImg.setGoodsImg_mainpath(goodsImgCursor.getString(0));
+                    String string = goodsImgCursor.getString(0);
+                    goodsImg.setGoodsImg_mainpath(string);
                     goodsImgList.add(goodsImg);
 
                 }
+                goodsImgCursor.close();
             }
 
         }
+        readableDatabase.close();
+
         return goodsImgList;
 
     }
@@ -106,9 +110,12 @@ public class GoodsInfoManager {
                     userInfo.setUser_Head(user_name.getString(1));
                     userInfoList.add(userInfo);
 
+                    user_name.close();
                 }
             }
+
         }
+        readableDatabase.close();
 
         return userInfoList;
     }

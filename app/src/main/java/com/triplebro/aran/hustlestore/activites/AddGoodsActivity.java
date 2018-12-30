@@ -149,18 +149,19 @@ public class AddGoodsActivity extends Activity implements View.OnClickListener {
                 {
 
 
-                    goodsInfo.put("goods_id",ed_goodsId.getText().toString());
+                    goodsInfo.put("goods_id",String.valueOf(System.currentTimeMillis()));
                     goodsInfo.put("goods_price",ed_goodsPrice.getText().toString());
                     goodsInfo.put("goods_label", ed_goodsLabel.getText().toString());
                     goodsInfo.put("user_id",userInfo.getString("user_id",""));
-                    goodsImg.put("goods_id",ed_goodsId.getText().toString());
+                    goodsInfo.put("goods_Name",ed_goodsId.getText().toString());
+                    goodsImg.put("goods_id",String.valueOf(System.currentTimeMillis()));
                     goodsImg.put("goodsImg_mainpath",sharedPreferences.getString("goodsImg_mainpath",""));
                     goodsImg.put("goodsImg_sec1path",sharedPreferences.getString("goodsImg_sec1path",""));
                     goodsImg.put("goodsImg_sec2path",sharedPreferences.getString("goodsImg_sec2path",""));
                     goodsImg.put("goodsImg_sec3path",sharedPreferences.getString("goodsImg_sec3path",""));
                     goodsImg.put("goodsImg_sec4path",sharedPreferences.getString("goodsImg_sec4path",""));
-                    writableDatabase.insert("goodsInfo", null, goodsInfo);
-                    writableDatabase.insert("goodsImg", null, goodsImg);
+                    writableDatabase.insert("goodsInfo", null, this.goodsInfo);
+                    writableDatabase.insert("goodsImg", null, this.goodsImg);
                     writableDatabase.close();
                     finish();
 

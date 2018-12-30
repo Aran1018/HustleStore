@@ -16,10 +16,13 @@ import com.triplebro.aran.hustlestore.R;
 import com.triplebro.aran.hustlestore.activites.DetailsActivity;
 import com.triplebro.aran.hustlestore.beans.Goods;
 import com.triplebro.aran.hustlestore.beans.GoodsImg;
+import com.triplebro.aran.hustlestore.beans.UserInfo;
 import com.triplebro.aran.hustlestore.utils.GlideCircleTransform;
 import com.triplebro.aran.hustlestore.widget.RoundImageView;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.CropSquareTransformation;
 
 /**
  * 那当自己都萎靡到
@@ -36,10 +39,12 @@ public class MainRecyclerVIewAdapter extends RecyclerView.Adapter<MainRecyclerVI
     Context context;
     List<Goods> goodsList;
     List<GoodsImg> goodsImgs;
+    List<UserInfo> userInfos;
 
-    public MainRecyclerVIewAdapter(Context context, List<Goods> list) {
+    public MainRecyclerVIewAdapter(Context context, List<Goods> goodsList, List<GoodsImg> goodsImgs, List<UserInfo> userInfos) {
         this.context = context;
         this.goodsList = goodsList;
+        this.userInfos = userInfos;
         this.goodsImgs =  goodsImgs;
     }
 
@@ -65,30 +70,28 @@ public class MainRecyclerVIewAdapter extends RecyclerView.Adapter<MainRecyclerVI
     public void onBindViewHolder(MyHolder holder, int position) {
 
 
-//        String goods_name;
-//        String user_Head;
-//        String goods_price;
-//        int goods_beLike;
-//        int user_id;
-//        int goods_id;
-//        String goods_label;
-//        String goodsImg_mainpath;
-//        String goodsImg_sec1path;
-//        String goodsImg_sec2path;
-//        String goodsImg_sec3path;
-//        String goodsImg_sec4path;
-
+//        ll_goodsView = itemView.findViewById(R.id.ll_goodsView);
+//        iv_goodsimg = itemView.findViewById(R.id.iv_goodsimg);
+//        iv_userHead = itemView.findViewById(R.id.iv_userHead);
+//        tv_userName = itemView.findViewById(R.id.tv_userName);
+//        tv_goodsName = itemView.findViewById(R.id.tv_goodsName);
+//        tv_price = itemView.findViewById(R.id.tv_price);
+//        tv_likeCounts = itemView.findViewById(R.id.tv_likeCounts);
+        String goodsImg_mainpath = goodsImgs.get(position).getGoodsImg_mainpath();
         String goods_name = goodsList.get(position).getGoods_name();
-
+        String user_name = userInfos.get(position).getUser_name();
         String user_Head = goodsList.get(position).getUser_Head();
         String goods_price = goodsList.get(position).getGoods_price();
         int goods_beLike = goodsList.get(position).getGoods_beLike();
         String goods_label = goodsList.get(position).getGoods_label();
-        holder.tv_userName.setText();
+
+
+        Glide.with(context).load(user_Head).bitmapTransform(new GlideCircleTransform(context)).into(holder.iv_userHead);
+        Glide.with(context).load(goodsImg_mainpath).bitmapTransform(new CropSquareTransformation(context)).into(holder.iv_goodsimg);
+        holder.tv_userName.setText(user_name);
         holder.tv_goodsName.setText(goods_name);
         holder.tv_price.setText(goods_price);
-        Glide.with(context).load(user_Head).bitmapTransform(new GlideCircleTransform(context)).into(holder.iv_userHead);
-
+        holder.tv_likeCounts.setText(goods_beLike);
 
 
 //        holder.iv_goodsimg.setImageResource(goodsImg);
@@ -106,10 +109,10 @@ public class MainRecyclerVIewAdapter extends RecyclerView.Adapter<MainRecyclerVI
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.iv_goodsimg:
+            case R.id.iv_userHead:
             case R.id.tv_goodsName:
             case R.id.tv_userName:
             case R.id.tv_price:
-            case R.id.iv_userHead:
             case R.id.ll_goodsView:
             case R.id.tv_beLike:
                 Intent intent = new Intent(context, DetailsActivity.class);
@@ -120,11 +123,11 @@ public class MainRecyclerVIewAdapter extends RecyclerView.Adapter<MainRecyclerVI
     class MyHolder extends RecyclerView.ViewHolder {
 
         ImageView iv_goodsimg;
+        ImageView iv_userHead;
         TextView tv_userName;
         TextView tv_price;
-        ImageView iv_userHead;
         LinearLayout ll_goodsView;
-        TextView tv_beLike;
+        TextView tv_likeCounts;
        TextView tv_goodsName;
 
         private MyHolder(View itemView) {
@@ -135,17 +138,16 @@ public class MainRecyclerVIewAdapter extends RecyclerView.Adapter<MainRecyclerVI
             tv_userName = itemView.findViewById(R.id.tv_userName);
             tv_goodsName = itemView.findViewById(R.id.tv_goodsName);
             tv_price = itemView.findViewById(R.id.tv_price);
-            tv_beLike = itemView.findViewById(R.id.tv_beLike);
+            tv_likeCounts = itemView.findViewById(R.id.tv_likeCounts);
             setOnclick();
         }
         private void setOnclick(){
            iv_goodsimg.setOnClickListener(MainRecyclerVIewAdapter.this);
             ll_goodsView.setOnClickListener(MainRecyclerVIewAdapter.this);
-            rv_userImg.setOnClickListener(MainRecyclerVIewAdapter.this);
             tv_goodsName.setOnClickListener(MainRecyclerVIewAdapter.this);
             tv_userName.setOnClickListener(MainRecyclerVIewAdapter.this);
             tv_price.setOnClickListener(MainRecyclerVIewAdapter.this);
-            tv_beLike.setOnClickListener(MainRecyclerVIewAdapter.this);
+            tv_likeCounts.setOnClickListener(MainRecyclerVIewAdapter.this);
         }
     }
 }
