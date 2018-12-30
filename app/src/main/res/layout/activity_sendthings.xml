@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="@dimen/title_margin_top"
+    android:background="#FFF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/send_cancle"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:textColor="#818181"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消" />
+
+    <Button
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:background="@drawable/bt_black_corners"
+        android:id="@+id/bt_send_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="发表"
+        />
+
+    <EditText
+        android:id="@+id/ed_send_new"
+        android:hint="这一刻的想法..."
+        android:layout_marginTop="20dp"
+        android:enabled="true"
+        android:gravity="top"
+        android:minLines="8"
+        android:maxLines="10"
+        android:layout_width="match_parent"
+        android:layout_height="118dp"
+        android:layout_below="@+id/bt_send_new"
+        android:background="@drawable/edittext_textarea"
+        />
+
+    <Button
+        android:id="@+id/bt_selectphoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="126dp" />
+
+    <ImageView
+        android:id="@+id/iv_willsend"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_above="@+id/bt_selectphoto"/>
+
+</RelativeLayout>

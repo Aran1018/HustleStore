@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_details_titlebar"
+        android:layout_alignParentTop="true"
+        android:background="#20ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="@dimen/title_margin_right">
+
+        <RelativeLayout
+            android:id="@+id/rl_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp">
+
+            <Button
+                android:id="@+id/bt_back"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/ic_back" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/sv_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginTop="60dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.youth.banner.Banner
+                android:id="@+id/bn_details"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_gravity="center_horizontal">
+
+            </com.youth.banner.Banner>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="@dimen/title_margin_top">
+
+                    <TextView
+                        android:id="@+id/tv_goodsName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="100dp"
+                        android:gravity="center_horizontal"
+                        android:text="Air Jordan 1 Retro High Bred Toe AJ1 黑红脚趾"
+                        android:textColor="@color/gray3"
+                        android:textSize="20dp" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/title_margin_top">
+
+                        <TextView
+                            android:id="@+id/tv_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_centerInParent="true"
+                            android:text="1899"
+                            android:textColor="#000"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/tv_price"
+                            android:layout_toLeftOf="@id/tv_price"
+                            android:text="￥"
+                            android:textColor="#000"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_beLike"
+                            android:textColor="#a7a7a7"
+                            android:layout_centerHorizontal="true"
+                            android:text="1300喜欢"
+                            android:textSize="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:background="@color/item_background" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingLeft="@dimen/title_margin_top"
+                            android:paddingRight="@dimen/title_margin_top"
+                            android:paddingTop="@dimen/title_margin_top"
+                            >
+
+                            <TextView
+                                android:textColor="#7c7c7c"
+                                android:textSize="15dp"
+                                android:layout_centerVertical="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="货号" />
+
+                            <TextView
+                                android:id="@+id/tv_goods_id"
+                                android:textColor="#7c7c7c"
+                                android:textSize="15dp"
+                                android:layout_centerVertical="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:text="G314159699" />
+
+                        </RelativeLayout>
+                        <include layout="@layout/item_underline"/>
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingLeft="@dimen/title_margin_top"
+                            android:paddingRight="@dimen/title_margin_top"
+                            android:paddingTop="@dimen/title_margin_top"
+                            >
+
+                            <TextView
+                                android:textColor="#7c7c7c"
+                                android:textSize="15dp"
+                                android:layout_centerVertical="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="品牌" />
+
+                            <TextView
+                                android:id="@+id/tv_brand"
+                                android:textColor="#7c7c7c"
+                                android:textSize="15dp"
+                                android:layout_centerVertical="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:text="Nike" />
+
+                        </RelativeLayout>
+                        <include layout="@layout/item_underline"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingLeft="@dimen/title_margin_top"
+                            android:paddingRight="@dimen/title_margin_top"
+                            android:paddingTop="@dimen/title_margin_top"
+                            >
+
+                            <TextView
+                                android:textColor="#7c7c7c"
+                                android:textSize="15dp"
+                                android:layout_centerVertical="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="发售时间" />
+
+                            <TextView
+                                android:id="@+id/tv_sell_year"
+
+                                android:textColor="#7c7c7c"
+                                android:textSize="15dp"
+                                android:layout_centerVertical="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:text="2018" />
+
+                        </RelativeLayout>
+                        <include layout="@layout/item_underline"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingLeft="@dimen/title_margin_top"
+                            android:paddingRight="@dimen/title_margin_top"
+                            android:paddingTop="@dimen/title_margin_top"
+                            >
+
+                            <TextView
+                                android:textColor="#7c7c7c"
+                                android:textSize="15dp"
+                                android:layout_centerVertical="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="发售价格" />
+
+                            <TextView
+                                android:id="@+id/tv_sell_price"
+                                android:textColor="#7c7c7c"
+                                android:textSize="15dp"
+                                android:layout_centerVertical="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:text="￥1899 仅供参考" />
+
+                        </RelativeLayout>
+                        <include layout="@layout/item_underline"/>
+
+
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:background="@color/item_background" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <include layout="@layout/item_goods_example"/>
+            <include layout="@layout/item_goods_example"/>
+            <include layout="@layout/item_goods_example"/>
+            <include layout="@layout/item_goods_example"/>
+        </LinearLayout>
+
+    </ScrollView>
+    <LinearLayout
+        android:background="#90ffffff"
+        android:padding="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:text="购买"
+            android:textSize="15dp"
+            android:background="@drawable/bg_buy_bt"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <Button
+            android:textSize="15dp"
+            android:textColor="#FFFFFF"
+            android:text="交易"
+            android:background="@drawable/bg_deal_bt"
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</RelativeLayout>

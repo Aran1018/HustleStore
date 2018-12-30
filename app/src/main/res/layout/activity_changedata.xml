@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_marginTop="@dimen/title_margin_right"
+        android:layout_marginRight="@dimen/title_margin_right"
+        android:layout_marginLeft="@dimen/title_margin_right"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:id="@+id/bt_back"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+        <TextView
+            android:text="发现"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+    </RelativeLayout>
+    <include layout="@layout/item_underline"/>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:text="修改用户名："
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/et_chang_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/et_chang_context"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/bt_commit"
+        android:text="确定"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

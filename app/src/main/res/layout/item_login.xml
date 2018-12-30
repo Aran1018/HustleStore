@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_ed_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+
+        <EditText
+            android:id="@+id/ed_login_phonenumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edittext_bg_light"
+            android:hint="请输入手机号"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/bt_deletedrawable"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/title_margin_right"
+            android:layout_marginTop="@dimen/title_margin_right"
+            android:background="@drawable/bt_deletedrawable"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_ed_phonenumber_item"
+        android:layout_width="match_parent"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_height="60dp">
+
+        <EditText
+            android:id="@+id/ed_login_password"
+            android:hint="请输入密码"
+            android:singleLine="true"
+            android:background="@drawable/edittext_bg_light"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_height="60dp">
+
+        <TextView
+            android:id="@+id/tv_forget_registe"
+            android:textColor="@color/gray3"
+            android:layout_alignParentRight="true"
+            android:text="没有账号，忘记密码？左滑>>>"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_marginTop="-50dp"
+        android:layout_height="120dp">
+
+        <Button
+            android:id="@+id/bt_submit_login"
+            android:text="登  录"
+            android:textSize="15dp"
+            android:textColor="#FFF"
+            android:background="@drawable/bg_confirmbt_noshadow"
+            android:layout_width="match_parent"
+            android:layout_height="120dp" />
+
+    </RelativeLayout>
+</LinearLayout>
