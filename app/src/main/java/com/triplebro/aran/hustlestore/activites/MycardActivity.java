@@ -37,7 +37,7 @@ import java.io.File;
  */
 
 
-public class MycardActivity extends Activity implements View.OnClickListener{
+public class MycardActivity extends BaseActivity implements View.OnClickListener{
 
 
     private RelativeLayout rl_back;

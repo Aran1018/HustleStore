@@ -38,7 +38,7 @@ import com.triplebro.aran.hustlestore.widget.RoundImageView;
  */
 
 
-public class MineFragment extends Fragment implements View.OnClickListener {
+public class MineFragment extends BaseFragment implements View.OnClickListener {
 
     private View fragment_mine;
     private Button bt_set;

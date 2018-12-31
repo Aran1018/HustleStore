@@ -36,7 +36,7 @@ import jp.wasabeef.glide.transformations.CropSquareTransformation;
  */
 
 
-public class AddGoodsActivity extends Activity implements View.OnClickListener {
+public class AddGoodsActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView iv_main;
     private ImageView iv_sec1;

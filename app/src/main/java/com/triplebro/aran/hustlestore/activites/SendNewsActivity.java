@@ -37,7 +37,7 @@ import static com.triplebro.aran.hustlestore.properties.Properties.REQUEST_CODE_
  */
 
 
-public class SendNewsActivity extends Activity {
+public class SendNewsActivity extends BaseActivity {
 
 
 

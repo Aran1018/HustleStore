@@ -34,7 +34,7 @@ import java.util.List;
  */
 
 
-public class ListFragment extends Fragment {
+public class ListFragment extends BaseFragment {
 
     private View fragment_list;
     private int mDistanceY;

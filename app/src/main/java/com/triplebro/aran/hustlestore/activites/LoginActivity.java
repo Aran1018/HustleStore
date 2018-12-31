@@ -23,7 +23,7 @@ import com.triplebro.aran.hustlestore.R;
  */
 
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends BaseActivity {
 
     private ImageView im_login_imgtext;
     private LinearLayout ll_ed_item;

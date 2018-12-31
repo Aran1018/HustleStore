@@ -25,7 +25,7 @@ import com.triplebro.aran.hustlestore.R;
  */
 
 
-public class BottomFragment extends Fragment implements View.OnClickListener {
+public class BottomFragment extends BaseFragment implements View.OnClickListener {
 
     private View fragment_tabbar;
     private LinearLayout ll_main;

@@ -6,10 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.triplebro.aran.hustlestore.R;
-import com.triplebro.aran.hustlestore.utils.GlideImageLoader;
+import com.triplebro.aran.hustlestore.beans.TrafficData;
 
 import java.util.ArrayList;
 
@@ -24,57 +24,59 @@ import java.util.ArrayList;
  */
 
 
-public class TrafficShowAdapter extends RecyclerView.Adapter {
+public class TrafficShowAdapter extends RecyclerView.Adapter<TrafficShowAdapter.ViewHolder> {
 
-    private ArrayList<String> list;
+    private ArrayList<TrafficData> list;
     private Context context;
-    private ArrayList<Object> mHeights;
 
-
-    public TrafficShowAdapter(ArrayList<String> list, Context context) {
+    public TrafficShowAdapter(ArrayList<TrafficData> list, Context context) {
         this.list = list;
         this.context = context;
-        getRandomHight();
     }
-    public void getRandomHight(){
-        mHeights = new ArrayList<>();
-        for(int i=0; i < list.size();i++){
-            //随机的获取一个范围为200-600直接的高度
-            mHeights.add((int)(300+Math.random()*400));
-        }
-    }
-
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_imgtraffic, parent, false);
-
-        return new viewholder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof viewholder){
-            ViewGroup.LayoutParams layoutParams = ((viewholder) holder).iv_traffic.getLayoutParams();
-            layoutParams.height = (int) mHeights.get(position);
-            layoutParams.width = (int) mHeights.get(position);
-            ((viewholder) holder).iv_traffic.setLayoutParams(layoutParams);
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.bindData(list.get(position));
 
-            new GlideImageLoader().displayImage(context,list.get(position),((viewholder) holder).iv_traffic);
-        }
     }
 
     @Override
     public int getItemCount() {
         return list.size();
     }
-    static class viewholder extends RecyclerView.ViewHolder {
-        ImageView iv_traffic;
+    private OnItemClickListener onItemClickListener;
 
-        public viewholder(View itemView) {
+    public void setOnItemClickListener( OnItemClickListener onItemClickListener) {
+        this.onItemClickListener=onItemClickListener;
+    }
+    public interface OnItemClickListener{
+        void  onItemCLick(View view,TrafficData data);
+    }
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        private ImageView iv_traffic;
+
+        public ViewHolder(View itemView) {
             super(itemView);
-
             iv_traffic = itemView.findViewById(R.id.iv_traffic);
+        }
+
+        public void bindData(final TrafficData data){
+            Glide.with(context).load(data.path).into(iv_traffic);
+            if (onItemClickListener!=null) {
+                iv_traffic.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onItemClickListener.onItemCLick(v,data);
+                    }
+                });
+
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ import com.triplebro.aran.hustlestore.R;
  */
 
 
-public class MessageFragment extends Fragment {
+public class MessageFragment extends BaseFragment {
     private View fragment_message;
 
 

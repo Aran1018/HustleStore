@@ -25,7 +25,7 @@ import com.triplebro.aran.hustlestore.utils.CheckLoginUtils;
  */
 
 
-public class SetupActivity extends Activity implements View.OnClickListener {
+public class SetupActivity extends BaseActivity implements View.OnClickListener {
 
     private Button bt_logout;
     private Button bt_back;

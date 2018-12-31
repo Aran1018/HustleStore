@@ -1,6 +1,7 @@
 package com.triplebro.aran.hustlestore.activites;
 
 import android.app.Activity;
+
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -11,7 +12,7 @@ import com.triplebro.aran.hustlestore.fragments.BottomFragment;
 import com.triplebro.aran.hustlestore.fragments.MainFragment;
 import com.triplebro.aran.hustlestore.utils.PermissionUtil;
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
 
 
     @Override

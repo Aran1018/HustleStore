@@ -23,7 +23,7 @@ import com.triplebro.aran.hustlestore.R;
  */
 
 
-public class SplashActivity extends Activity {
+public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

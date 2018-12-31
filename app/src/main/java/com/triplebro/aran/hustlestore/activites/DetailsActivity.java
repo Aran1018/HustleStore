@@ -37,7 +37,7 @@ import java.util.List;
  */
 
 
-public class DetailsActivity extends Activity implements View.OnClickListener {
+public class DetailsActivity extends BaseActivity implements View.OnClickListener {
 
 
     private LinearLayout ll_point_box;

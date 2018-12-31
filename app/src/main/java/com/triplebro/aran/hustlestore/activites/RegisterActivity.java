@@ -25,7 +25,7 @@ import java.util.List;
  */
 
 
-public class RegisterActivity extends Activity {
+public class RegisterActivity extends BaseActivity {
 
     private  int Layouts[] = {R.layout.item_login,R.layout.item_register};
     private ViewPager vp_login;

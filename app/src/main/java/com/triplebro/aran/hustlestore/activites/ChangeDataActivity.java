@@ -28,7 +28,7 @@ import com.triplebro.aran.hustlestore.databases.MyOpenHelper;
  */
 
 
-public class ChangeDataActivity extends Activity {
+public class ChangeDataActivity extends BaseActivity {
 
     private Button bt_back;
     private Button bt_commit;

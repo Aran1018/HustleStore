@@ -37,7 +37,7 @@ import java.util.List;
  */
 
 
-public class FirstActivity extends Activity implements View.OnClickListener {
+public class FirstActivity extends BaseActivity implements View.OnClickListener {
 
     private RelativeLayout rl_first;
     private RelativeLayout rl_login;

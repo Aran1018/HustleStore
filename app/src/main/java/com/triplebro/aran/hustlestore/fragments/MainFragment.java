@@ -1,25 +1,17 @@
 package com.triplebro.aran.hustlestore.fragments;
 
 import android.annotation.SuppressLint;
-import android.app.Fragment;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Scroller;
 import android.widget.TextView;
@@ -28,13 +20,10 @@ import android.widget.Toast;
 import com.triplebro.aran.hustlestore.R;
 import com.triplebro.aran.hustlestore.adapter.BannerAdapter;
 import com.triplebro.aran.hustlestore.adapter.MainRecyclerVIewAdapter;
-import com.triplebro.aran.hustlestore.beans.Goods;
-import com.triplebro.aran.hustlestore.databases.MyOpenHelper;
 import com.triplebro.aran.hustlestore.manager.GoodsInfoManager;
 import com.triplebro.aran.hustlestore.utils.AnimationUtils;
 import com.triplebro.aran.hustlestore.utils.GetPathFromUri;
 import com.triplebro.aran.hustlestore.utils.GlideImageLoader;
-import com.triplebro.aran.hustlestore.utils.ViewPagerScroller;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
@@ -53,7 +42,7 @@ import java.util.List;
 
 
 @SuppressLint("NewApi")
-public class MainFragment extends Fragment implements ViewPager.OnPageChangeListener, View.OnScrollChangeListener, View.OnClickListener {
+public class MainFragment extends BaseFragment implements ViewPager.OnPageChangeListener, View.OnScrollChangeListener, View.OnClickListener {
 
     private View fragment_main;
     /**
