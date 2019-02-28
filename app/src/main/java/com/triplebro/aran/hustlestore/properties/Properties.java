@@ -50,5 +50,7 @@ public static final int SET_SECIMG1 = 101;
 public static final int SET_SECIMG2 = 102;
 public static final int SET_SECIMG3 = 103;
 public static final int SET_SECIMG4 = 104;
+public static final int SEND_CONTEXT = 9527;
+public static final int SHOW_DETAIL = 2048;
 
 }

@@ -1,6 +1,9 @@
 package com.triplebro.aran.hustlestore.activites;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -8,7 +11,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -17,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.triplebro.aran.hustlestore.R;
 import com.triplebro.aran.hustlestore.adapter.TrafficShowAdapter;
 import com.triplebro.aran.hustlestore.beans.TrafficData;
+import com.triplebro.aran.hustlestore.databases.MyOpenHelper;
 import com.triplebro.aran.hustlestore.utils.AnimationUtils;
 
 import java.util.ArrayList;
@@ -39,6 +42,7 @@ public class TrafficUserShowActivity extends Activity {
     private RelativeLayout rl_back;
     private Button bt_back;
     private int mDistanceY;
+    private SQLiteDatabase db;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +60,23 @@ public class TrafficUserShowActivity extends Activity {
         rl_back.bringToFront();
         bt_back.bringToFront();
         ArrayList<TrafficData> list = new ArrayList<TrafficData>();
+        //todo list add pic from db
+        MyOpenHelper myOpenHelper = new MyOpenHelper(this);
+        db = myOpenHelper.getWritableDatabase();
+        Cursor publishContent = db.query("PublishContent", new String[]{"content_img","user_id"}, null, null, null, null, null);
+        if (publishContent!=null&&publishContent.getCount()>0)
+        {
+            while (publishContent.moveToNext()){
+                TrafficData trafficdata = new TrafficData();
+                trafficdata.setPath(publishContent.getString(0));
+                trafficdata.setUserId(publishContent.getString(1));
+                list.add(trafficdata);
+            }
+            publishContent.close();
+            db.close();
+        }
+
+        db.close();
 //        for(int i=0;i<6;i++){
 //
 //            list.add("/data/data/com.triplebro.aran.hustlestore/cache/images/shoes_user_show01/1.jpg");
@@ -64,11 +85,7 @@ public class TrafficUserShowActivity extends Activity {
 //            list.add("/data/data/com.triplebro.aran.hustlestore/cache/images/shoes_user_show01/4.jpg");
 //            list.add("/data/data/com.triplebro.aran.hustlestore/cache/images/shoes_user_show01/5.jpg");
 //        }
-        for (int i = 0; i < 30; i++) {
-            TrafficData trafficData = new TrafficData();
-            trafficData.path=R.mipmap.goods_example;
-            list.add(trafficData);
-        }
+
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL);
         //设置空隙处理方式为不处理--item乱跳问题
         staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
@@ -76,12 +93,16 @@ public class TrafficUserShowActivity extends Activity {
 
         Glide.with(this);
         rv_usershowtraffic.setLayoutManager(staggeredGridLayoutManager);
-        TrafficShowAdapter adapter = new TrafficShowAdapter(list,this);
+        TrafficShowAdapter adapter = new TrafficShowAdapter(this,list);
         rv_usershowtraffic.setAdapter(adapter);
         adapter.setOnItemClickListener(new TrafficShowAdapter.OnItemClickListener() {
             @Override
             public void onItemCLick(View view, TrafficData data) {
-
+                //todo  find
+                Intent intent = new Intent(TrafficUserShowActivity.this, PhotoDetailActivity.class);
+                intent.putExtra("int_path",data.getPath());
+                intent.putExtra("user_id",data.getUserId());
+                startActivity(intent);
             }
         });
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

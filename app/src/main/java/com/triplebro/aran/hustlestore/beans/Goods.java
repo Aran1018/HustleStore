@@ -22,12 +22,20 @@ public class Goods {
     String goods_label;
     String user_Head;
     int goods_beLike;
+    String user_name;;
     String goodsImg_mainpath;
     String goodsImg_sec1path;
     String goodsImg_sec2path;
     String goodsImg_sec3path;
     String goodsImg_sec4path;
 
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
 
     public Goods() {
     }

@@ -18,7 +18,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MyOpenHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "YiAPP.db";//数据库名字
-    private static final int DATABASE_VERSION = 1;//数据库版本号
+    private static final int DATABASE_VERSION = 2;//数据库版本号
 
     //用户表
     private static final String CREATE_TABLE_USERINFO = "" +
@@ -69,8 +69,13 @@ public class MyOpenHelper extends SQLiteOpenHelper {
             "user_id VARCHAR(300)," +
             "comments_content VARCHAR(50)," +
             "comments_date VARCHAR(200),"+
-            "FOREIGN KEY (user_id) REFERENCES userInfo(user_id)" +
+            "FOREIGN KEY (user_id) REFERENCES userInfo(user_id)," +
             "FOREIGN KEY (publish_id) REFERENCES PublishContent(publish_id)" +
+            ")";
+    private static final String CREATE_TABLE_ADMINISTRATOR = "" +
+            "create table admin(" +
+            "admin_id varchar primary key," +
+            "admin_password varchar(20)" +
             ")";
 
     public MyOpenHelper(Context context) {
@@ -86,6 +91,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_GOODSIMG);
         db.execSQL(CREATE_TABLE_PUBLISHCONTENT);
         db.execSQL(CREATE_TABLE_COMMENTS);
+        db.execSQL(CREATE_TABLE_ADMINISTRATOR);
 
     }
 

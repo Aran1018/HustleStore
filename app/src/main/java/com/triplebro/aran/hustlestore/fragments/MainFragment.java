@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.triplebro.aran.hustlestore.R;
 import com.triplebro.aran.hustlestore.adapter.BannerAdapter;
 import com.triplebro.aran.hustlestore.adapter.MainRecyclerVIewAdapter;
+import com.triplebro.aran.hustlestore.beans.Goods;
 import com.triplebro.aran.hustlestore.manager.GoodsInfoManager;
 import com.triplebro.aran.hustlestore.utils.AnimationUtils;
 import com.triplebro.aran.hustlestore.utils.GetPathFromUri;
@@ -88,8 +89,8 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
     private void initBanner() {
         imgLists = new ArrayList<String>();
 
-        String pathByUri = GetPathFromUri.getPathByUri(Uri.parse("content://media/external/images/media/549"), getActivity());
-        imgLists.add(pathByUri);
+        //String pathByUri = GetPathFromUri.getPathByUri(Uri.parse("content://media/external/images/media/549"), getActivity());
+        //imgLists.add(pathByUri);
         imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/images/ad/ad1.png");
         imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/images/ad/ad1.png");
         imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/images/ad/ad1.png");
@@ -118,7 +119,10 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
         Scroller scroller = new Scroller(getActivity());
         scroller.setFriction(1000);
 
-        MainRecyclerVIewAdapter mainRecyclerVIewAdapter = new MainRecyclerVIewAdapter(getActivity(), new GoodsInfoManager(getActivity()).getGoodsList(), new GoodsInfoManager(getActivity()).getGoodsImg(new GoodsInfoManager(getActivity()).getGoodsList()), new GoodsInfoManager(getActivity()).getUserName(new GoodsInfoManager(getActivity()).getGoodsList()));
+        List<Goods> goodsList = new GoodsInfoManager(getActivity()).getGoodsList();
+        List<Goods> goodsImg = new GoodsInfoManager(getActivity()).getGoodsImg(goodsList);
+        List<Goods> userName = new GoodsInfoManager(getActivity()).getUserName(goodsImg);
+        MainRecyclerVIewAdapter mainRecyclerVIewAdapter = new MainRecyclerVIewAdapter(getActivity(), userName);
         GridLayoutManager manager = new GridLayoutManager(getActivity(), 2) {
             @Override
             public boolean canScrollVertically() {

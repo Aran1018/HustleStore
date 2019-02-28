@@ -35,6 +35,7 @@ public class ChangeDataActivity extends BaseActivity {
     private EditText et_chang_name;
     private EditText et_chang_context;
     private SQLiteDatabase writableDatabase;
+    private String user_id;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class ChangeDataActivity extends BaseActivity {
         MyOpenHelper myOpenHelper = new MyOpenHelper(this);
         writableDatabase = myOpenHelper.getWritableDatabase();
         SharedPreferences sharedPreferences = this.getSharedPreferences("userInfo", MODE_PRIVATE);
-        String user_id = sharedPreferences.getString("user_id", "");
+        user_id = sharedPreferences.getString("user_id", "");
         Cursor userLoginCursor = writableDatabase.query("userInfo", new String[]{"user_name", "user_introduction"}, "user_id = ?", new String[]{user_id}, null, null, null, null);
         if (userLoginCursor != null && userLoginCursor.getCount() > 0) {
             while (userLoginCursor.moveToNext()) {
@@ -67,7 +68,7 @@ public class ChangeDataActivity extends BaseActivity {
                 ContentValues contentValues = new ContentValues();
                 contentValues.put("user_name",et_chang_name.getText().toString());
                 contentValues.put("user_introduction",et_chang_context.getText().toString());
-                writableDatabase.update("userInfo",contentValues,null,null);
+                writableDatabase.update("userInfo",contentValues,"user_id=?",new String[]{user_id});
                 writableDatabase.close();
                 Intent intent = new Intent(ChangeDataActivity.this,SetupActivity.class);
                 startActivity(intent);

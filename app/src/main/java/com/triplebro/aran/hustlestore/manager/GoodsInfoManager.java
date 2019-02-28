@@ -70,20 +70,18 @@ public class GoodsInfoManager {
         return goodsList;
     }
 
-    public List<GoodsImg> getGoodsImg(List<Goods> list){
-        List<GoodsImg> goodsImgList = new ArrayList<>();
+    public List<Goods> getGoodsImg(List<Goods> list){
         MyOpenHelper myOpenHelper = new MyOpenHelper(context);
         SQLiteDatabase readableDatabase = myOpenHelper.getReadableDatabase();
         for (Goods goods: list) {
             Cursor goodsImgCursor = readableDatabase.query("goodsImg",
-                    new String[]{"goodsImg_mainpath"}, "goods_id = ?", new String[]{String.valueOf(goods.getGoods_id())},
+                    new String[]{"goodsImg_mainpath"}, "goods_id = ?", new String[]{goods.getGoods_id()},
                     null, null, null, null);
             if (goodsImgCursor!=null && goodsImgCursor.getCount()>0){
                 while (goodsImgCursor.moveToNext()){
-                    GoodsImg goodsImg = new GoodsImg();
+
                     String string = goodsImgCursor.getString(0);
-                    goodsImg.setGoodsImg_mainpath(string);
-                    goodsImgList.add(goodsImg);
+                    goods.setGoodsImg_mainpath(string);
 
                 }
                 goodsImgCursor.close();
@@ -92,11 +90,10 @@ public class GoodsInfoManager {
         }
         readableDatabase.close();
 
-        return goodsImgList;
+        return list;
 
     }
-    public List<UserInfo> getUserName(List<Goods> list){
-        List<UserInfo> userInfoList = new ArrayList<>();
+        public List<Goods> getUserName(List<Goods> list){
         MyOpenHelper myOpenHelper = new MyOpenHelper(context);
         SQLiteDatabase readableDatabase = myOpenHelper.getReadableDatabase();
         for (Goods goods:list) {
@@ -105,10 +102,8 @@ public class GoodsInfoManager {
                     null, null, null, null);
             if (user_name!=null && user_name.getCount()>0){
                 while (user_name.moveToNext()){
-                    UserInfo userInfo = new UserInfo();
-                    userInfo.setUser_name(user_name.getString(0));
-                    userInfo.setUser_Head(user_name.getString(1));
-                    userInfoList.add(userInfo);
+                    goods.setUser_name(user_name.getString(0));
+                    goods.setUser_Head(user_name.getString(1));
 
                     user_name.close();
                 }
@@ -117,6 +112,6 @@ public class GoodsInfoManager {
         }
         readableDatabase.close();
 
-        return userInfoList;
+        return list;
     }
 }

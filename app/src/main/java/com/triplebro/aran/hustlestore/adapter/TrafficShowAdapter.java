@@ -13,6 +13,8 @@ import com.triplebro.aran.hustlestore.beans.TrafficData;
 
 import java.util.ArrayList;
 
+import jp.wasabeef.glide.transformations.CropSquareTransformation;
+
 /**
  * 那当自己都萎靡到
  * 无法被依靠的时候该如何振作？
@@ -29,7 +31,7 @@ public class TrafficShowAdapter extends RecyclerView.Adapter<TrafficShowAdapter.
     private ArrayList<TrafficData> list;
     private Context context;
 
-    public TrafficShowAdapter(ArrayList<TrafficData> list, Context context) {
+    public TrafficShowAdapter( Context context,ArrayList<TrafficData> list) {
         this.list = list;
         this.context = context;
     }
@@ -55,9 +57,11 @@ public class TrafficShowAdapter extends RecyclerView.Adapter<TrafficShowAdapter.
     public void setOnItemClickListener( OnItemClickListener onItemClickListener) {
         this.onItemClickListener=onItemClickListener;
     }
+
     public interface OnItemClickListener{
-        void  onItemCLick(View view,TrafficData data);
+        void  onItemCLick(View view, TrafficData data);
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView iv_traffic;
 
@@ -67,7 +71,7 @@ public class TrafficShowAdapter extends RecyclerView.Adapter<TrafficShowAdapter.
         }
 
         public void bindData(final TrafficData data){
-            Glide.with(context).load(data.path).into(iv_traffic);
+            Glide.with(context).load(data.path).bitmapTransform(new CropSquareTransformation(context)).into(iv_traffic);
             if (onItemClickListener!=null) {
                 iv_traffic.setOnClickListener(new View.OnClickListener() {
                     @Override

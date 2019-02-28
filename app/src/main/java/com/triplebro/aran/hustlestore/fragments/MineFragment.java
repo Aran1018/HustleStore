@@ -23,6 +23,7 @@ import com.triplebro.aran.hustlestore.activites.FirstActivity;
 import com.triplebro.aran.hustlestore.activites.MycardActivity;
 import com.triplebro.aran.hustlestore.activites.SetupActivity;
 import com.triplebro.aran.hustlestore.databases.MyOpenHelper;
+import com.triplebro.aran.hustlestore.utils.CheckLoginUtils;
 import com.triplebro.aran.hustlestore.utils.EasyGetGlideRoundImgUtils;
 import com.triplebro.aran.hustlestore.widget.RoundImageView;
 
@@ -118,27 +119,44 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         switch (v.getId()){
             case R.id.rl_set:
             case R.id.bt_set:
+                if (CheckLoginUtils.checkLogin(getActivity())){
 
-                Intent intent = new Intent(getActivity(), SetupActivity.class);
-                startActivity(intent);
+                    Intent intent = new Intent(getActivity(), SetupActivity.class);
+                    startActivity(intent);
+                }else {
+                    Intent intent1 = new Intent(getActivity(),FirstActivity.class);
+                    startActivity(intent1);
+                }
                 break;
             case R.id.ll_name:
             case R.id.rv_name:
             case R.id.tv_name:
             case R.id.iv_name_in:
             case R.id.rl_name_in:
-                Intent mycardIntent = new Intent(getActivity(), MycardActivity.class);
-                mycardIntent .putExtra("user_name",user_name);
-                mycardIntent .putExtra("user_introduction",user_introduction);
-                startActivity(mycardIntent);
+                if(CheckLoginUtils.checkLogin(getActivity())){
+
+                    Intent mycardIntent = new Intent(getActivity(), MycardActivity.class);
+                    mycardIntent .putExtra("user_name",user_name);
+                    mycardIntent .putExtra("user_introduction",user_introduction);
+                    startActivity(mycardIntent);
+                }else {
+                    Intent intent1 = new Intent(getActivity(),FirstActivity.class);
+                    startActivity(intent1);
+                }
                 break;
             case R.id.ll_sendGoods:
             case R.id.rl_sendGoods:
             case R.id.bt_sendGoods:
             case R.id.tv_sendGoods:
 
-                Intent sendGoods = new Intent(getActivity(), AddGoodsActivity.class);
-                startActivity(sendGoods);
+                if (CheckLoginUtils.checkLogin(getActivity())){
+
+                    Intent sendGoods = new Intent(getActivity(), AddGoodsActivity.class);
+                    startActivity(sendGoods);
+                }else {
+                    Intent intent1 = new Intent(getActivity(),FirstActivity.class);
+                    startActivity(intent1);
+                }
 
                 break;
         }

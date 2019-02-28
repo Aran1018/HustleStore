@@ -4,21 +4,31 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.triplebro.aran.hustlestore.R;
+import com.triplebro.aran.hustlestore.activites.FirstActivity;
 import com.triplebro.aran.hustlestore.activites.MainActivity;
 import com.triplebro.aran.hustlestore.activites.SendNewsActivity;
+import com.triplebro.aran.hustlestore.activites.SetupActivity;
 import com.triplebro.aran.hustlestore.activites.TrafficUserShowActivity;
 import com.triplebro.aran.hustlestore.adapter.FindTitleImgAdapter;
+import com.triplebro.aran.hustlestore.adapter.MyListAdapter;
+import com.triplebro.aran.hustlestore.beans.ContextInfo;
+import com.triplebro.aran.hustlestore.manager.ListManager;
 import com.triplebro.aran.hustlestore.utils.AnimationUtils;
+import com.triplebro.aran.hustlestore.utils.CheckLoginUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,11 +57,15 @@ public class ListFragment extends BaseFragment {
     private ImageView iv_show4;
     private ImageView iv_show5;
     private RelativeLayout rl_more;
+    private RecyclerView rcv_findingList;
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
         fragment_list = inflater.inflate(R.layout.fragment_list, null);
-        ScrollView sv_item = fragment_list.findViewById(R.id.sv_item);
+        rcv_findingList = fragment_list.findViewById(R.id.rcv_findingList);
+
+
+        NestedScrollView sv_item = fragment_list.findViewById(R.id.sv_item);
         initView();
         rl_more.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +74,21 @@ public class ListFragment extends BaseFragment {
                 startActivity(intent);
             }
         });
-        initImageData();
+        List<ContextInfo> contextInfoList = new ListManager(getActivity()).getContextInfoList();
+        List<ContextInfo> fullContextInfoList = new ListManager(getActivity()).getFullContextInfoList(contextInfoList);
+        MyListAdapter myListAdapter = new MyListAdapter(getActivity(), fullContextInfoList);
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity()){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        rcv_findingList.setLayoutManager(manager);
+        rcv_findingList.setAdapter(myListAdapter);
+
+
+//        initImageData();
         final RelativeLayout rl_titlebar = fragment_list.findViewById(R.id.rl_titlebar);
         rl_titlebar.bringToFront();
         bt_find_send.bringToFront();
@@ -81,8 +109,15 @@ public class ListFragment extends BaseFragment {
         bt_find_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), SendNewsActivity.class);
-                startActivity(intent);
+                if (CheckLoginUtils.checkLogin(getActivity())){
+                    Intent intent = new Intent(getActivity(), SendNewsActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent1 = new Intent(getActivity(),FirstActivity.class);
+                    startActivity(intent1);
+                }
+
             }
         });
 
@@ -102,20 +137,20 @@ public class ListFragment extends BaseFragment {
         iv_show5 = fragment_list.findViewById(R.id.iv_show5);
         rl_more = fragment_list.findViewById(R.id.rl_more);
     }
-    private void initImageData() {
-        List<ImageView> imageViews = new ArrayList<ImageView>();
-        imageViews.add(iv_show1);
-        imageViews.add(iv_show2);
-        imageViews.add(iv_show3);
-        imageViews.add(iv_show4);
-        imageViews.add(iv_show5);
-        List<String> strings = new ArrayList<String>();
-        strings.add("/data/data/com.triplebro.aran.hustlestore/cache/user_show01/1.jpg");
-        strings.add("/data/data/com.triplebro.aran.hustlestore/cache/user_show01/2.jpg");
-        strings.add("/data/data/com.triplebro.aran.hustlestore/cache/user_show01/3.jpg");
-        strings.add("/data/data/com.triplebro.aran.hustlestore/cache/user_show01/4.jpg");
-        strings.add("/data/data/com.triplebro.aran.hustlestore/cache/user_show01/5.jpg");
-
-        new FindTitleImgAdapter(getActivity(),imageViews,strings);
-    }
+//    private void initImageData() {
+//        List<ImageView> imageViews = new ArrayList<ImageView>();
+//        imageViews.add(iv_show1);
+//        imageViews.add(iv_show2);
+//        imageViews.add(iv_show3);
+//        imageViews.add(iv_show4);
+//        imageViews.add(iv_show5);
+//        List<String> strings = new ArrayList<String>();
+//        strings.add("/data/data/com.triplebro.aran.hustlestore/cache/user_show01/1.jpg");
+//        strings.add("/data/data/com.triplebro.aran.hustlestore/cache/user_show01/2.jpg");
+//        strings.add("/data/data/com.triplebro.aran.hustlestore/cache/user_show01/3.jpg");
+//        strings.add("/data/data/com.triplebro.aran.hustlestore/cache/user_show01/4.jpg");
+//        strings.add("/data/data/com.triplebro.aran.hustlestore/cache/user_show01/5.jpg");
+//
+//        new FindTitleImgAdapter(getActivity(),imageViews,strings);
+//    }
 }
