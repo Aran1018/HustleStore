@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.triplebro.aran.hustlestore"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -32,7 +32,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation 'com.zhihu.android:matisse:0.4.3'
-
+    implementation project(':CordovaLib')
     // Glide图形转换工具
     implementation 'jp.wasabeef:glide-transformations:2.0.1'
 

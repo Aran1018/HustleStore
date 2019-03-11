@@ -279,6 +279,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent" />
         <Button
+            android:id="@+id/bt_detailActivity_deal"
             android:textSize="15dp"
             android:textColor="#FFFFFF"
             android:text="交易"

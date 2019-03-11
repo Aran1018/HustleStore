@@ -1,6 +1,7 @@
 package com.triplebro.aran.hustlestore.activites;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -48,6 +49,7 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
     private ScrollView sv_details;
     private int mDistanceY;
     private RelativeLayout rl_details_titlebar;
+    private Button bt_detailActivity_deal;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         bt_back = findViewById(R.id.bt_back);
         rl_back = findViewById(R.id.rl_back);
         sv_details = findViewById(R.id.sv_details);
+        bt_detailActivity_deal = findViewById(R.id.bt_detailActivity_deal);
         rl_details_titlebar = findViewById(R.id.rl_details_titlebar);
         bt_back.bringToFront();
         rl_back.bringToFront();
@@ -80,6 +83,7 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
 
         bt_back.setOnClickListener(this);
         rl_back.setOnClickListener(this);
+        bt_detailActivity_deal.setOnClickListener(this);
 
     }
 
@@ -105,6 +109,9 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
             case R.id.rl_back:
             case R.id.bt_back:
                 finish();
+                break;
+            case R.id.bt_detailActivity_deal:
+                startActivity(new Intent(this,WebViewActivity.class));
                 break;
         }
     }

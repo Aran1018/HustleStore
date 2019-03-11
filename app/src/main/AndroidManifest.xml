@@ -88,6 +88,11 @@
             android:name=".activites.FirstActivity"
             android:theme="@android:style/Theme.NoTitleBar">
         </activity>
+        <activity
+            android:launchMode="singleTask"
+            android:name=".activites.WebViewActivity"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.triplebro.aran.hustlestore"
