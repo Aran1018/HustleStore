@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:layout_margin="@dimen/title_margin_right"
+            android:layout_margin="@dimen/title_margin10dp"
             android:layout_width="match_parent"
             android:layout_height="40dp">
 
@@ -23,7 +23,7 @@
                 android:id="@+id/bt_mine_message"
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
-                android:layout_marginRight="@dimen/title_margin_right"
+                android:layout_marginRight="@dimen/title_margin10dp"
 
                 android:layout_width="40dp"
                 android:layout_height="40dp">
@@ -60,7 +60,7 @@
             android:id="@+id/ll_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/title_margin_right">
+            android:padding="@dimen/title_margin10dp">
 
             <ImageView
                 android:id="@+id/rv_name"
@@ -72,7 +72,7 @@
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/title_margin_right"
+                android:layout_marginLeft="@dimen/title_margin10dp"
                 android:gravity="center_vertical"
                 android:text="Arans"
                 android:textColor="@color/gray6"
@@ -159,26 +159,30 @@
 
 
         <LinearLayout
+            android:id="@+id/ll_mySends"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
-            android:padding="@dimen/title_margin_right">
+            android:padding="@dimen/title_margin10dp">
 
             <LinearLayout
+                android:id="@+id/sll_mySends"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
                 <ImageView
+                    android:id="@+id/iv_mySends"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@mipmap/ic_launcher_round" />
 
                 <TextView
+                    android:id="@+id/tv_mySends"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/title_margin_right"
+                    android:layout_marginLeft="@dimen/title_margin10dp"
                     android:text="我的发布"
                     android:textColor="@color/gray3" />
 
@@ -205,7 +209,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
-            android:padding="@dimen/title_margin_right">
+            android:padding="@dimen/title_margin10dp">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -221,7 +225,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/title_margin_right"
+                    android:layout_marginLeft="@dimen/title_margin10dp"
                     android:text="我的收藏"
                     android:textColor="@color/gray3" />
 
@@ -243,7 +247,7 @@
     </LinearLayout>
     <include layout="@layout/item_backgroud" />
     <LinearLayout
-        android:padding="@dimen/title_margin_right"
+        android:padding="@dimen/title_margin10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -252,7 +256,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
-            android:padding="@dimen/title_margin_right">
+            android:padding="@dimen/title_margin10dp">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -268,7 +272,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/title_margin_right"
+                    android:layout_marginLeft="@dimen/title_margin10dp"
                     android:text="我的收藏"
                     android:textColor="@color/gray3" />
 

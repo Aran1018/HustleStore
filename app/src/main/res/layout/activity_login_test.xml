@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_margin="@dimen/title_margin_right">
+        android:layout_margin="@dimen/title_margin10dp">
 
         <Button
             android:id="@+id/bt_down"
@@ -35,10 +35,10 @@
         android:layout_alignBottom="@id/ll_login_background"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:paddingBottom="@dimen/title_margin_right"
+        android:paddingBottom="@dimen/title_margin10dp"
         android:paddingLeft="@dimen/title_margin_top"
         android:paddingRight="@dimen/title_margin_top"
-        android:paddingTop="@dimen/title_margin_right"
+        android:paddingTop="@dimen/title_margin10dp"
         android:src="@drawable/logo_text_black"
         android:textColor="@color/black" />
 

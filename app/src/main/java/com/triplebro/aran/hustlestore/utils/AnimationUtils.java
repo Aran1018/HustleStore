@@ -60,9 +60,9 @@ public class AnimationUtils {
         if (mDistanceY <= toolbarHeight) {
             float scale = (float) mDistanceY/toolbarHeight;
             float alpha =  255-(255 * scale);
-            Log.i("TransparentUtils:scale",scale+"");
-            Log.i("TransparentUtils:mD",mDistanceY+"");
-            Log.i("TransparentUtils:dy",dy+"");
+            Log.i("TransparentUtils:scale", scale + "");
+            Log.i("TransparentUtils:mD", mDistanceY + "");
+            Log.i("TransparentUtils:dy", dy + "");
             view.setBackgroundColor(Color.argb((int) alpha, 255, 255, 255));
         } else {
             //将标题栏的颜色设置为完全不透明状态

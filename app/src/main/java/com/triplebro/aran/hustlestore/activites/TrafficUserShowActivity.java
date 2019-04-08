@@ -59,32 +59,7 @@ public class TrafficUserShowActivity extends Activity {
         });
         rl_back.bringToFront();
         bt_back.bringToFront();
-        ArrayList<TrafficData> list = new ArrayList<TrafficData>();
-        //todo list add pic from db
-        MyOpenHelper myOpenHelper = new MyOpenHelper(this);
-        db = myOpenHelper.getWritableDatabase();
-        Cursor publishContent = db.query("PublishContent", new String[]{"content_img","user_id"}, null, null, null, null, null);
-        if (publishContent!=null&&publishContent.getCount()>0)
-        {
-            while (publishContent.moveToNext()){
-                TrafficData trafficdata = new TrafficData();
-                trafficdata.setPath(publishContent.getString(0));
-                trafficdata.setUserId(publishContent.getString(1));
-                list.add(trafficdata);
-            }
-            publishContent.close();
-            db.close();
-        }
-
-        db.close();
-//        for(int i=0;i<6;i++){
-//
-//            list.add("/data/data/com.triplebro.aran.hustlestore/cache/images/shoes_user_show01/1.jpg");
-//            list.add("/data/data/com.triplebro.aran.hustlestore/cache/images/shoes_user_show01/2.jpg");
-//            list.add("/data/data/com.triplebro.aran.hustlestore/cache/images/shoes_user_show01/3.jpg");
-//            list.add("/data/data/com.triplebro.aran.hustlestore/cache/images/shoes_user_show01/4.jpg");
-//            list.add("/data/data/com.triplebro.aran.hustlestore/cache/images/shoes_user_show01/5.jpg");
-//        }
+        ArrayList<TrafficData> list = getTrafficData();
 
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL);
         //设置空隙处理方式为不处理--item乱跳问题
@@ -99,9 +74,10 @@ public class TrafficUserShowActivity extends Activity {
             @Override
             public void onItemCLick(View view, TrafficData data) {
                 //todo  find
-                Intent intent = new Intent(TrafficUserShowActivity.this, PhotoDetailActivity.class);
+                Intent intent = new Intent(TrafficUserShowActivity.this, AllPhotoDetailActivity.class);
                 intent.putExtra("int_path",data.getPath());
                 intent.putExtra("user_id",data.getUserId());
+                intent.putExtra("publish_id",data.getPublish_id());
                 startActivity(intent);
             }
         });
@@ -118,5 +94,29 @@ public class TrafficUserShowActivity extends Activity {
         }
 
 
+    }
+
+
+    private ArrayList<TrafficData> getTrafficData() {
+        ArrayList<TrafficData> list = new ArrayList<TrafficData>();
+        //todo list add pic from db
+        MyOpenHelper myOpenHelper = new MyOpenHelper(this);
+        db = myOpenHelper.getWritableDatabase();
+        Cursor publishContent = db.query("PublishContent", new String[]{"content_img","publish_id","user_id"}, null, null, null, null, null);
+        if (publishContent!=null&&publishContent.getCount()>0)
+        {
+            while (publishContent.moveToNext()){
+                TrafficData trafficdata = new TrafficData();
+                trafficdata.setPath(publishContent.getString(0));
+                trafficdata.setPublish_id(publishContent.getString(1));
+                trafficdata.setUserId(publishContent.getString(2));
+                list.add(trafficdata);
+            }
+            publishContent.close();
+            db.close();
+        }
+
+        db.close();
+        return list;
     }
 }

@@ -21,6 +21,7 @@ import com.triplebro.aran.hustlestore.R;
 import com.triplebro.aran.hustlestore.activites.AddGoodsActivity;
 import com.triplebro.aran.hustlestore.activites.FirstActivity;
 import com.triplebro.aran.hustlestore.activites.MycardActivity;
+import com.triplebro.aran.hustlestore.activites.SendGoodsActivity;
 import com.triplebro.aran.hustlestore.activites.SetupActivity;
 import com.triplebro.aran.hustlestore.databases.MyOpenHelper;
 import com.triplebro.aran.hustlestore.utils.CheckLoginUtils;
@@ -55,6 +56,10 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     private RelativeLayout rl_sendGoods;
     private Button bt_sendGoods;
     private TextView tv_sendGoods;
+    private LinearLayout ll_mySends;
+    private LinearLayout sll_mySends;
+    private TextView tv_mySends;
+    private ImageView iv_mySends;
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
@@ -71,6 +76,10 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         rl_sendGoods = fragment_mine.findViewById(R.id.rl_sendGoods);
         bt_sendGoods = fragment_mine.findViewById(R.id.bt_sendGoods);
         tv_sendGoods = fragment_mine.findViewById(R.id.tv_sendGoods);
+        ll_mySends = fragment_mine.findViewById(R.id.ll_mySends);
+        sll_mySends = fragment_mine.findViewById(R.id.sll_mySends);
+        tv_mySends = fragment_mine.findViewById(R.id.tv_mySends);
+        iv_mySends = fragment_mine.findViewById(R.id.iv_mySends);
 
         setOnclick();
 
@@ -111,6 +120,10 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         rl_sendGoods.setOnClickListener(this);
         bt_sendGoods.setOnClickListener(this);
         tv_sendGoods.setOnClickListener(this);
+        iv_mySends.setOnClickListener(this);
+        ll_mySends.setOnClickListener(this);
+        sll_mySends.setOnClickListener(this);
+        tv_mySends.setOnClickListener(this);
     }
 
 
@@ -158,6 +171,13 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                     startActivity(intent1);
                 }
 
+                break;
+            case R.id.iv_mySends:
+            case R.id.ll_mySends:
+            case R.id.sll_mySends:
+            case R.id.tv_mySends:
+                Intent mySends = new Intent(getActivity(),SendGoodsActivity.class);
+                startActivity(mySends);
                 break;
         }
     }

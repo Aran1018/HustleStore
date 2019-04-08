@@ -86,7 +86,6 @@ public class LoginViewpagerAdapter extends PagerAdapter {
                         }else {
                             LoginManager loginManager = new LoginManager(context,ed_login_phonenumber.getText().toString(),ed_login_password.getText().toString());
                             loginManager.login();
-
                         }
                     }
                 });ed_login_phonenumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -95,7 +94,6 @@ public class LoginViewpagerAdapter extends PagerAdapter {
                         switch (position){
                             case 0:
                                 if (hasFocus) {
-
                                     bt_deletedrawable.setVisibility(View.VISIBLE);
                                     bt_deletedrawable.setOnClickListener(new View.OnClickListener()
                                     {
@@ -121,7 +119,6 @@ public class LoginViewpagerAdapter extends PagerAdapter {
                 bt_submit_register = v.findViewById(R.id.bt_submit_register);
                 ed_register_phonenumber = v.findViewById(R.id.ed_register_phonenumber);
                 ed_register_password = v.findViewById(R.id.ed_register_password);
-
 
                 bt_submit_register.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -150,7 +147,6 @@ public class LoginViewpagerAdapter extends PagerAdapter {
                                 writableDatabase.close();
                             }
                             Intent intent = new Intent(context,MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-
                             context.startActivity(intent);
                         }
 

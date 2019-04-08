@@ -35,18 +35,14 @@ import jp.wasabeef.glide.transformations.CropSquareTransformation;
  */
 
 
-public class MainRecyclerVIewAdapter extends RecyclerView.Adapter<MainRecyclerVIewAdapter.MyHolder>implements View.OnClickListener {
+public class MainRecyclerVIewAdapter extends RecyclerView.Adapter<MainRecyclerVIewAdapter.MyHolder> {
     Context context;
     List<Goods> goodsList;
-    List<GoodsImg> goodsImgs;
-    List<UserInfo> userInfos;
 
     public MainRecyclerVIewAdapter(Context context, List<Goods> goodsList) {
         this.context = context;
         this.goodsList = goodsList;
     }
-
-
 
 
     @Override
@@ -60,7 +56,7 @@ public class MainRecyclerVIewAdapter extends RecyclerView.Adapter<MainRecyclerVI
     }
 
     @Override
-    public void onBindViewHolder(MyHolder holder, int position) {
+        public void onBindViewHolder(MyHolder holder, int position) {
 
         String goodsImg_mainpath = goodsList.get(position).getGoodsImg_mainpath();
         String goods_name = goodsList.get(position).getGoods_name();
@@ -69,7 +65,6 @@ public class MainRecyclerVIewAdapter extends RecyclerView.Adapter<MainRecyclerVI
         String goods_price = goodsList.get(position).getGoods_price();
         int goods_beLike = goodsList.get(position).getGoods_beLike();
         String goods_label = goodsList.get(position).getGoods_label();
-
 
         Glide.with(context).load(user_Head).bitmapTransform(new GlideCircleTransform(context)).into(holder.iv_userHead);
         Glide.with(context).load(goodsImg_mainpath).bitmapTransform(new CropSquareTransformation(context)).into(holder.iv_goodsimg);
@@ -84,19 +79,28 @@ public class MainRecyclerVIewAdapter extends RecyclerView.Adapter<MainRecyclerVI
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.iv_goodsimg:
-            case R.id.iv_userHead:
-            case R.id.tv_goodsName:
-            case R.id.tv_userName:
-            case R.id.tv_price:
-            case R.id.ll_goodsView:
-            case R.id.tv_likeCounts:
-                Intent intent = new Intent(context, DetailsActivity.class);
-                context.startActivity(intent);
-        }
+    public long getItemId(int position) {
+        return (position);
     }
+//
+//    @Override
+//    public void onClick(View v) {
+//        switch (v.getId()){
+//            case R.id.iv_goodsimg:
+//            case R.id.iv_userHead:
+//            case R.id.tv_goodsName:
+//            case R.id.tv_userName:
+//            case R.id.tv_price:
+//            case R.id.ll_goodsView:
+//            case R.id.tv_likeCounts:
+//                Intent intent = new Intent(context, DetailsActivity.class);
+//                int user_id = goodsList.get(1).getUser_id();
+//                String goods_id=goodsList.get(1).getGoods_id();
+//                intent.putExtra("user_id",user_id);
+//                intent.putExtra("goods_id",goods_id);
+//                context.startActivity(intent);
+//        }
+//    }
 
     class MyHolder extends RecyclerView.ViewHolder {
 
@@ -105,8 +109,7 @@ public class MainRecyclerVIewAdapter extends RecyclerView.Adapter<MainRecyclerVI
         TextView tv_userName;
         TextView tv_price;
         LinearLayout ll_goodsView;
-        TextView tv_likeCounts;
-       TextView tv_goodsName;
+        TextView tv_goodsName;
 
         private MyHolder(View itemView) {
             super(itemView);
@@ -116,16 +119,25 @@ public class MainRecyclerVIewAdapter extends RecyclerView.Adapter<MainRecyclerVI
             tv_userName = itemView.findViewById(R.id.tv_userName);
             tv_goodsName = itemView.findViewById(R.id.tv_goodsName);
             tv_price = itemView.findViewById(R.id.tv_price);
-//            tv_likeCounts = itemView.findViewById(R.id.tv_likeCounts);
-            setOnclick();
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, DetailsActivity.class);
+                    int user_id = goodsList.get(getPosition()).getUser_id();
+                    String goods_id = goodsList.get(getPosition()).getGoods_id();
+                    intent.putExtra("user_id", user_id);
+                    intent.putExtra("goods_id", goods_id);
+                    context.startActivity(intent);
+                }
+            });
+//            setOnclick();
         }
-        private void setOnclick(){
-           iv_goodsimg.setOnClickListener(MainRecyclerVIewAdapter.this);
-            ll_goodsView.setOnClickListener(MainRecyclerVIewAdapter.this);
-            tv_goodsName.setOnClickListener(MainRecyclerVIewAdapter.this);
-            tv_userName.setOnClickListener(MainRecyclerVIewAdapter.this);
-            tv_price.setOnClickListener(MainRecyclerVIewAdapter.this);
-//            tv_likeCounts.setOnClickListener(MainRecyclerVIewAdapter.this);
-        }
+//        private void setOnclick(){
+//           iv_goodsimg.setOnClickListener(MainRecyclerVIewAdapter.this);
+//            ll_goodsView.setOnClickListener(MainRecyclerVIewAdapter.this);
+//            tv_goodsName.setOnClickListener(MainRecyclerVIewAdapter.this);
+//            tv_userName.setOnClickListener(MainRecyclerVIewAdapter.this);
+//            tv_price.setOnClickListener(MainRecyclerVIewAdapter.this);
+//        }
     }
 }

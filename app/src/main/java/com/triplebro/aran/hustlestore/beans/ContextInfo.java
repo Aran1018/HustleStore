@@ -17,7 +17,18 @@ public class ContextInfo {
     String userName;
     String content_img;
     String user_id;
+    String user_introduction;
     String publish_content;
+    String publish_time;
+    String publish_id;
+
+    public String getPublish_id() {
+        return publish_id;
+    }
+
+    public void setPublish_id(String publish_id) {
+        this.publish_id = publish_id;
+    }
 
     public ContextInfo() {
     }
@@ -28,6 +39,22 @@ public class ContextInfo {
         this.content_img = content_img;
         this.user_id = user_id;
         this.publish_content = publish_content;
+    }
+
+    public String getUser_introduction() {
+        return user_introduction;
+    }
+
+    public void setUser_introduction(String user_introduction) {
+        this.user_introduction = user_introduction;
+    }
+
+    public String getPublish_time() {
+        return publish_time;
+    }
+
+    public void setPublish_time(String publish_time) {
+        this.publish_time = publish_time;
     }
 
     public String getUserHead() {

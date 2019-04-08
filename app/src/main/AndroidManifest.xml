@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.triplebro.aran.hustlestore">
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -11,11 +12,13 @@
     <application
         android:name=".activites.App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/yi_select"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon"
+        >
         <activity
             android:launchMode="singleTask"
             android:name=".activites.MainActivity"
@@ -33,12 +36,17 @@
         </activity>
         <activity
             android:launchMode="singleTask"
-            android:name=".activites.PhotoDetailActivity"
+            android:name=".activites.MyPhotoDetailActivity"
             android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity
             android:launchMode="singleTask"
             android:name=".activites.LoginActivity"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity
+            android:launchMode="singleTask"
+            android:name=".activites.AllPhotoDetailActivity"
             android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity
@@ -51,10 +59,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:launchMode="singleTask"
             android:name=".activites.TrafficUserShowActivity"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity
+            android:launchMode="singleTask"
+            android:name=".activites.SendGoodsActivity"
             android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity

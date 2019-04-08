@@ -4,6 +4,16 @@ public class TrafficData {
     public String path;
     public String user_id;
 
+    public String getPublish_id() {
+        return publish_id;
+    }
+
+    public void setPublish_id(String publish_id) {
+        this.publish_id = publish_id;
+    }
+
+    public String publish_id;
+
     public String getPath() {
         return path;
     }

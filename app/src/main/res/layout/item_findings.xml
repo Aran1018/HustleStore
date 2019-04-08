@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:text="用户小明"
                 android:textColor="@color/black"
-                android:textSize="14dp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -39,9 +39,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="这里是用户说的话"
-                android:textColor="@color/textColorHardGray"
-                android:textSize="14dp" />
+                android:textColor="@color/gray3"
+                android:textSize="12dp" />
         </LinearLayout>
+        <TextView
+            android:id="@+id/tv_findings_time"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/gray"
+            android:layout_centerVertical="true"
+            android:text="16:04:30"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
 
     <ImageView
@@ -58,7 +67,7 @@
         <LinearLayout
             android:layout_gravity="center_vertical"
             android:gravity="center"
-            android:layout_marginLeft="@dimen/title_margin_right"
+            android:layout_marginLeft="@dimen/title_margin10dp"
             android:layout_width="40dp"
             android:layout_height="40dp">
             <Button
@@ -68,17 +77,31 @@
                 android:layout_height="30dp" />
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ll_comments"
             android:gravity="center"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/title_margin_right"
+            android:layout_marginLeft="@dimen/title_margin10dp"
             android:layout_width="40dp"
             android:layout_height="40dp">
             <Button
+                android:id="@+id/bt_comments"
                 android:gravity="center"
                 android:layout_width="30dp"
                 android:background="@drawable/ic_comments"
                 android:layout_height="30dp" />
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_findings_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="DECEMBER  2,2018" />
     </LinearLayout>
     <include layout="@layout/item_underline"/>
 </LinearLayout>

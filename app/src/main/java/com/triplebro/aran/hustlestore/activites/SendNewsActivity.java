@@ -76,30 +76,31 @@ public class SendNewsActivity extends BaseActivity {
                 MyOpenHelper myOpenHelper = new MyOpenHelper(SendNewsActivity.this);
                 SQLiteDatabase writableDatabase = myOpenHelper.getWritableDatabase();
                 ContentValues contentValues = new ContentValues();
-                SimpleDateFormat formatter   =   new   SimpleDateFormat   ("yyyy年MM月dd日   HH:mm:ss");
-                Date curDate =  new Date(System.currentTimeMillis());
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日   HH:mm:ss");
+                Date curDate = new Date(System.currentTimeMillis());
                 SharedPreferences sendContext = getSharedPreferences("sendContext", MODE_PRIVATE);
                 SharedPreferences userInfo = getSharedPreferences("userInfo", MODE_PRIVATE);
                 String userId = userInfo.getString("user_id", "");
                 String send_img = sendContext.getString("SEND_IMG", "");
 
-                contentValues.put("content_img",send_img);
-                contentValues.put("user_id",userId);
+                contentValues.put("content_img", send_img);
+                contentValues.put("user_id", userId);
                 contentValues.put("publish_time", formatter.format(curDate));
                 long publishContent = writableDatabase.insert("PublishContent", null, contentValues);
-                if (publishContent>0){
+                if (publishContent > 0) {
                     finish();
                     Toast.makeText(SendNewsActivity.this, "小事发布成功！", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case Properties.SEND_CONTEXT:
-                SharedPreferences sharedPreferences = this.getSharedPreferences("sendContext",MODE_PRIVATE);
+                SharedPreferences sharedPreferences = this.getSharedPreferences("sendContext", MODE_PRIVATE);
                 SharedPreferences.Editor edit = sharedPreferences.edit();
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 

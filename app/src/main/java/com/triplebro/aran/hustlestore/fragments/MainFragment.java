@@ -1,6 +1,7 @@
 package com.triplebro.aran.hustlestore.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.triplebro.aran.hustlestore.R;
+import com.triplebro.aran.hustlestore.activites.WebViewActivity;
 import com.triplebro.aran.hustlestore.adapter.BannerAdapter;
 import com.triplebro.aran.hustlestore.adapter.MainRecyclerVIewAdapter;
 import com.triplebro.aran.hustlestore.beans.Goods;
@@ -27,6 +29,7 @@ import com.triplebro.aran.hustlestore.utils.GetPathFromUri;
 import com.triplebro.aran.hustlestore.utils.GlideImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
+import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +76,6 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
      * @return
      */
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragment_main = inflater.inflate(R.layout.fragment_main, null);
@@ -91,16 +93,23 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
 
         //String pathByUri = GetPathFromUri.getPathByUri(Uri.parse("content://media/external/images/media/549"), getActivity());
         //imgLists.add(pathByUri);
-        imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/images/ad/ad1.png");
-        imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/images/ad/ad1.png");
-        imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/images/ad/ad1.png");
-        imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/images/ad/ad1.png");
+        imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/imgs/ad/ad1.png");
+        imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/imgs/ad/ad2.png");
+        imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/imgs/ad/ad1.png");
+        imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/imgs/ad/ad2.png");
         bn_main.setImageLoader(new GlideImageLoader());
         bn_main.setImages(imgLists);
-        bn_main.isAutoPlay(false);
+        bn_main.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int position) {
+                if (position==0||position==1){
+                    startActivity(new Intent(getActivity(),WebViewActivity.class));
+                }
+            }
+        });
+        bn_main.isAutoPlay(true);
         bn_main.setIndicatorGravity(BannerConfig.CENTER);
         bn_main.start();
-
     }
 
 
@@ -109,16 +118,9 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
         tv_title_text = fragment_main.findViewById(R.id.tv_title_text);
         bt_serch = fragment_main.findViewById(R.id.bt_serch);
         bn_main = fragment_main.findViewById(R.id.bn_main);
-//        viewPager.setOnPageChangeListener(this);// 设置页面更新监听
         rv_mainlist = fragment_main.findViewById(R.id.rv_mainlist);
-//        ll_point_container = fragment_main.findViewById(R.id.ll_point_container);
-//        ViewPagerScroller pagerScroller = new ViewPagerScroller(getActivity());
-//        pagerScroller.setScrollDuration(1000);//设置更新时间
-//        pagerScroller.initViewPagerScroll(bn_main);
-
         Scroller scroller = new Scroller(getActivity());
         scroller.setFriction(1000);
-
         List<Goods> goodsList = new GoodsInfoManager(getActivity()).getGoodsList();
         List<Goods> goodsImg = new GoodsInfoManager(getActivity()).getGoodsImg(goodsList);
         List<Goods> userName = new GoodsInfoManager(getActivity()).getUserName(goodsImg);
@@ -135,10 +137,6 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
 
     }
 
-    private void initData() {
-        // 初始化要展示的5个ImageView
-        initImageList();
-    }
 
     private void setOnclickListener() {
         bt_serch.setOnClickListener(this);
@@ -147,15 +145,6 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
 
     }
 
-    private void initAdapter() {
-        ll_point_container.getChildAt(0).setEnabled(true);
-        previousSelectedPosition = 0;
-        // 设置适配器
-        viewPager.setAdapter(new BannerAdapter(imageViewList));
-        // 默认设置到中间的某个位置
-        // 2147483647 / 2 = 1073741823 - (1073741823 % 5)
-        viewPager.setCurrentItem(7000000); // 设置到某个位置
-    }
 
 
     @Override
@@ -169,21 +158,6 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
     }
 
 
-    private void initTimeUtils() {
-        new Thread() {
-            public void run() {
-                isRunning = true;
-                while (isRunning) {
-                    try {
-                        Thread.sleep(4500);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-            }
-        }.start();
-    }
 
 
     private void initImageList() {
@@ -225,23 +199,11 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
 
     @Override
     public void onPageSelected(int position) {
-        // 新的条目被选中时调用
         System.out.println("onPageSelected: " + position);
         int newPosition = position % imageViewList.size();
-
-        //设置文本
-
-//		for (int i = 0; i < ll_point_container.getChildCount(); i++) {
-//			View childAt = ll_point_container.getChildAt(position);
-//			childAt.setEnabled(position == i);
-//		}
-        // 把之前的禁用, 把最新的启用, 更新指示器
         ll_point_container.getChildAt(previousSelectedPosition).setEnabled(false);
         ll_point_container.getChildAt(newPosition).setEnabled(true);
-
-        // 记录之前的位置
         previousSelectedPosition = newPosition;
-
     }
 
     @Override

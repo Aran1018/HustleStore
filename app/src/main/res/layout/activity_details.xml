@@ -12,7 +12,7 @@
         android:background="#20ffffff"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_margin="@dimen/title_margin_right">
+        android:layout_margin="@dimen/title_margin10dp">
 
         <RelativeLayout
             android:id="@+id/rl_back"
@@ -43,7 +43,7 @@
             <com.youth.banner.Banner
                 android:id="@+id/bn_details"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
+                android:layout_height="300dp"
                 android:layout_gravity="center_horizontal">
 
             </com.youth.banner.Banner>
@@ -65,9 +65,9 @@
                         android:layout_centerInParent="true"
                         android:layout_marginLeft="100dp"
                         android:gravity="center_horizontal"
-                        android:text="Air Jordan 1 Retro High Bred Toe AJ1 黑红脚趾"
+                        android:text="YEEZY BOOTS 700 V2 2019年版‘GEODE’巧克力 灰咖啡 晶洞"
                         android:textColor="@color/gray3"
-                        android:textSize="20dp" />
+                        android:textSize="18dp" />
                 </RelativeLayout>
 
                 <LinearLayout

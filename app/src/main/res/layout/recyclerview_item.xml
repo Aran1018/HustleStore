@@ -1,86 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/ll_goodsView"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_columnWeight="1"
-    android:layout_margin="5dp"
-    android:background="@color/cardview_light_background"
-    android:layout_width="170dp"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/title_margin_right"
-    android:paddingRight="@dimen/title_margin_right"
-    >
-    <ImageView
-        android:id="@+id/iv_goodsimg"
-        android:src="@mipmap/goods_example"
-        android:layout_width="150dp"
-        android:layout_height="150dp" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:id="@+id/tv_goodsName"
-            android:text="Nike Jordan 1Nike Jordan 1Nike Jordan 1..."
-            android:textAlignment="gravity"
-            android:textColor="@color/gray3"
-            android:maxLines="2"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
 
-    </LinearLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="0dp"
+    android:orientation="horizontal">
+
     <LinearLayout
-        android:layout_marginTop="@dimen/title_margin_right"
-        android:layout_marginBottom="@dimen/title_margin_right"
-        android:layout_width="match_parent"
+        android:id="@+id/ll_goodsView"
+        android:layout_width="179dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:layout_columnWeight="1"
+        android:layout_margin="0dp"
+        android:background="@color/cardview_light_background"
+        android:orientation="vertical">
+
         <LinearLayout
-            android:layout_weight="1"
-            android:gravity="left"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="@dimen/margin_5dp"
+            android:layout_marginTop="@dimen/title_margin10dp"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left">
+
+                <ImageView
+                    android:id="@+id/iv_userHead"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/user_img" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4">
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:id="@+id/tv_userName"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="用户小明"
+                    android:textColor="@color/gray5" />
+            </LinearLayout>
+
             <ImageView
-                android:id="@+id/iv_userHead"
-                android:src="@drawable/user_img"
+
                 android:layout_width="20dp"
                 android:layout_height="20dp" />
-
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_goodsimg"
+            android:layout_width="179dp"
+            android:layout_height="179dp"
+            android:background="#000"
+            android:src="@mipmap/goods_example" />
+
         <LinearLayout
-            android:layout_weight="5"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:orientation="horizontal">
+
             <TextView
-                android:id="@+id/tv_userName"
-                android:text="用户小明"
-                android:textColor="@color/gray6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:id="@+id/tv_goodsName"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:text="Nike Jordan 1Nike Jordan 1Nike Jordan 1..."
+                android:textAlignment="gravity"
+                android:textColor="@color/gray3" />
+
         </LinearLayout>
 
-    </LinearLayout>
-    <RelativeLayout
+        <RelativeLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tv_price"
-            android:text="￥1299"
-            android:textStyle="bold"
-            android:textColor="@color/pricecolor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/tv_likeCounts"
-            android:text="10人喜欢"
-            android:textColor="@color/gray3"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥1299"
+                android:textColor="@color/pricecolor"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_likeCounts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="10人喜欢"
+                android:textColor="@color/gray3" />
+        </RelativeLayout>
+
+        <include layout="@layout/item_underline" />
+    </LinearLayout>
+    <include layout="@layout/item_rightline" />
+
 </LinearLayout>

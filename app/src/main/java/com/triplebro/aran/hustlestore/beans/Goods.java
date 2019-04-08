@@ -22,12 +22,8 @@ public class Goods {
     String goods_label;
     String user_Head;
     int goods_beLike;
-    String user_name;;
+    String user_name;
     String goodsImg_mainpath;
-    String goodsImg_sec1path;
-    String goodsImg_sec2path;
-    String goodsImg_sec3path;
-    String goodsImg_sec4path;
 
     public String getUser_name() {
         return user_name;
@@ -48,11 +44,6 @@ public class Goods {
         this.goods_label = goods_label;
         this.user_Head = user_Head;
         this.goods_beLike = goods_beLike;
-        this.goodsImg_mainpath = goodsImg_mainpath;
-        this.goodsImg_sec1path = goodsImg_sec1path;
-        this.goodsImg_sec2path = goodsImg_sec2path;
-        this.goodsImg_sec3path = goodsImg_sec3path;
-        this.goodsImg_sec4path = goodsImg_sec4path;
     }
 
     public String getGoodsImg_mainpath() {
@@ -61,38 +52,6 @@ public class Goods {
 
     public void setGoodsImg_mainpath(String goodsImg_mainpath) {
         this.goodsImg_mainpath = goodsImg_mainpath;
-    }
-
-    public String getGoodsImg_sec1path() {
-        return goodsImg_sec1path;
-    }
-
-    public void setGoodsImg_sec1path(String goodsImg_sec1path) {
-        this.goodsImg_sec1path = goodsImg_sec1path;
-    }
-
-    public String getGoodsImg_sec2path() {
-        return goodsImg_sec2path;
-    }
-
-    public void setGoodsImg_sec2path(String goodsImg_sec2path) {
-        this.goodsImg_sec2path = goodsImg_sec2path;
-    }
-
-    public String getGoodsImg_sec3path() {
-        return goodsImg_sec3path;
-    }
-
-    public void setGoodsImg_sec3path(String goodsImg_sec3path) {
-        this.goodsImg_sec3path = goodsImg_sec3path;
-    }
-
-    public String getGoodsImg_sec4path() {
-        return goodsImg_sec4path;
-    }
-
-    public void setGoodsImg_sec4path(String goodsImg_sec4path) {
-        this.goodsImg_sec4path = goodsImg_sec4path;
     }
 
     public int getUser_id() {

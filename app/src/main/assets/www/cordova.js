@@ -173,7 +173,13 @@ function createEvent (type, data) {
     }
     return event;
 }
-
+/*跳回原生*/
+this.receivedEvent('jumpNative');
+cordova.plugins.FinishActivity.jumpNative(function(res){
+	alert(res)
+},function(msg){
+	alert(msg)
+},"nothing");
 /* eslint-disable no-undef */
 var cordova = {
     define: define,

@@ -38,7 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="主页"
-                    android:textSize="@dimen/bottom_text_size_value" />
+                    android:textSize="@dimen/bottom_text_size10dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -62,7 +62,7 @@
 
                     android:layout_height="wrap_content"
                     android:text="发现"
-                    android:textSize="@dimen/bottom_text_size_value" />
+                    android:textSize="@dimen/bottom_text_size10dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -86,7 +86,7 @@
 
                     android:layout_height="wrap_content"
                     android:text="我的"
-                    android:textSize="@dimen/bottom_text_size_value" />
+                    android:textSize="@dimen/bottom_text_size10dp" />
             </LinearLayout>
 
         </LinearLayout>

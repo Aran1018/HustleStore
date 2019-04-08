@@ -149,12 +149,13 @@ public class AddGoodsActivity extends BaseActivity implements View.OnClickListen
                 {
 
 
-                    goodsInfo.put("goods_id",String.valueOf(System.currentTimeMillis()));
+                    String goodsID = String.valueOf(java.util.UUID.randomUUID().toString());
+                    goodsInfo.put("goods_id",goodsID);
                     goodsInfo.put("goods_price",ed_goodsPrice.getText().toString());
                     goodsInfo.put("goods_label", ed_goodsLabel.getText().toString());
                     goodsInfo.put("user_id",userInfo.getString("user_id",""));
                     goodsInfo.put("goods_Name",ed_goodsId.getText().toString());
-                    goodsImg.put("goods_id",String.valueOf(System.currentTimeMillis()));
+                    goodsImg.put("goods_id",goodsID);
                     goodsImg.put("goodsImg_mainpath",sharedPreferences.getString("goodsImg_mainpath",""));
                     goodsImg.put("goodsImg_sec1path",sharedPreferences.getString("goodsImg_sec1path",""));
                     goodsImg.put("goodsImg_sec2path",sharedPreferences.getString("goodsImg_sec2path",""));

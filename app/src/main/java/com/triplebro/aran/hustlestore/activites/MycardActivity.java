@@ -2,12 +2,15 @@ package com.triplebro.aran.hustlestore.activites;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,13 +20,17 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.triplebro.aran.hustlestore.R;
+import com.triplebro.aran.hustlestore.adapter.MyListAdapter;
+import com.triplebro.aran.hustlestore.beans.ContextInfo;
 import com.triplebro.aran.hustlestore.databases.MyOpenHelper;
+import com.triplebro.aran.hustlestore.manager.ListManager;
 import com.triplebro.aran.hustlestore.properties.Properties;
 import com.triplebro.aran.hustlestore.utils.ChooseImageDialogUtil;
 import com.triplebro.aran.hustlestore.utils.GlideCircleTransform;
 import com.triplebro.aran.hustlestore.utils.EasyGetGlideRoundImgUtils;
 
 import java.io.File;
+import java.util.List;
 
 
 /**
@@ -43,6 +50,7 @@ public class MycardActivity extends BaseActivity implements View.OnClickListener
     private RelativeLayout rl_back;
     private Button bt_back;
     private ImageView rv_userImg;
+    private RecyclerView rcv_findingList;
     private SharedPreferences userLogin;
     private String userHead;
     private long timeStamp;
@@ -59,6 +67,7 @@ public class MycardActivity extends BaseActivity implements View.OnClickListener
         tv_username = findViewById(R.id.tv_username);
         bt_back = findViewById(R.id.bt_back);
         rv_userImg = findViewById(R.id.rv_userImg);
+        rcv_findingList = findViewById(R.id.rcv_findingList);
         setOnclick();
         Intent intent = getIntent();
         String user_name = intent.getStringExtra("user_name");
@@ -66,18 +75,11 @@ public class MycardActivity extends BaseActivity implements View.OnClickListener
         tv_username.setText(user_name);
         tv_userdescribe.setText(user_introduction);
         EasyGetGlideRoundImgUtils.readGlideRoundImg(this,rv_userImg);
+        isGetData();
     }
-//
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        userLogin = getSharedPreferences("userInfo", MODE_PRIVATE);
-//        String userHead = userLogin.getString("user_Head", "");
-//        if (!userHead.isEmpty()){
-//            Glide.with(this).load(userHead).bitmapTransform(new GlideCircleTransform(this)).into(rv_userImg);
-//        }
-//        rv_userImg.setImageResource(R.drawable.bg_mycard);
-//    }
+
+
+
 
     private void setOnclick() {
         rl_back.setOnClickListener(this);
@@ -85,7 +87,22 @@ public class MycardActivity extends BaseActivity implements View.OnClickListener
         rv_userImg.setOnClickListener(this);
 
     }
-
+    private void isGetData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        String user_id = sharedPreferences.getString("user_id", "");
+        List<ContextInfo> contextInfoList = new ListManager(this).getContextInfoList(user_id);
+        List<ContextInfo> fullContextInfoList = new ListManager(this).getFullContextInfoList(contextInfoList);
+        MyListAdapter myListAdapter = new MyListAdapter(this, fullContextInfoList);
+        LinearLayoutManager manager = new LinearLayoutManager(this) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        rcv_findingList.setLayoutManager(manager);
+        rcv_findingList.setAdapter(myListAdapter);
+    }
     @Override
     public void onClick(View v) {
 

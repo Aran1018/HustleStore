@@ -34,8 +34,8 @@
         android:layout_centerHorizontal="true"
         android:textColor="@color/gray0"
         android:gravity="center"
-        android:paddingTop="@dimen/title_margin_right"
-        android:paddingBottom="@dimen/title_margin_right"
+        android:paddingTop="@dimen/title_margin10dp"
+        android:paddingBottom="@dimen/title_margin10dp"
         android:paddingRight="@dimen/title_margin_top"
         android:paddingLeft="@dimen/title_margin_top"
         android:src="@drawable/logo_text_white"
@@ -49,8 +49,8 @@
 
         <LinearLayout
             android:paddingTop="30dp"
-            android:paddingRight="@dimen/title_margin_right"
-            android:paddingLeft="@dimen/title_margin_right"
+            android:paddingRight="@dimen/title_margin10dp"
+            android:paddingLeft="@dimen/title_margin10dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -79,7 +79,7 @@
                     android:textColor="@color/gray0"
                     android:text="登 录"
                     android:textStyle="bold"
-                    android:textSize="@dimen/title_text_margin_value"
+                    android:textSize="@dimen/title_text_margin20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -96,7 +96,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
-            android:layout_margin="@dimen/title_margin_right"
+            android:layout_margin="@dimen/title_margin10dp"
             android:layout_width="match_parent"
             android:layout_height="70dp">
             <Button
@@ -122,8 +122,8 @@
             android:src="@drawable/logo_text_black"
             android:layout_alignBottom="@id/ll_login_background"
             android:layout_centerHorizontal="true"
-            android:paddingTop="@dimen/title_margin_right"
-            android:paddingBottom="@dimen/title_margin_right"
+            android:paddingTop="@dimen/title_margin10dp"
+            android:paddingBottom="@dimen/title_margin10dp"
             android:paddingRight="@dimen/title_margin_top"
             android:paddingLeft="@dimen/title_margin_top"
             android:textColor="@color/black"

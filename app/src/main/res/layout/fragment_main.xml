@@ -15,7 +15,7 @@
             android:id="@+id/rl_title_main"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginBottom="@dimen/title_text_margin_value"
+            android:layout_marginBottom="@dimen/title_margin10dp"
             android:layout_marginTop="@dimen/title_margin_top"
             android:orientation="horizontal">
 
@@ -23,10 +23,10 @@
                 android:id="@+id/tv_title_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/title_text_margin_value"
+                android:layout_marginLeft="@dimen/title_text_margin20dp"
                 android:text="首页"
                 android:textColor="@color/textColorHardGray"
-                android:textSize="@dimen/title_text_size_value"
+                android:textSize="@dimen/title_text_size35dp"
                 android:textStyle="bold" />
 
             <Button
@@ -36,18 +36,18 @@
                 android:layout_alignBottom="@id/tv_title_text"
                 android:layout_alignParentRight="true"
                 android:layout_marginBottom="@dimen/title_margin_top"
-                android:layout_marginRight="@dimen/title_text_margin_value"
+                android:layout_marginRight="@dimen/title_text_margin20dp"
                 android:background="@drawable/ic_serch" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="180dp"
                 android:layout_below="@id/tv_title_text">
 
                 <com.youth.banner.Banner
                     android:id="@+id/bn_main"
                     android:layout_width="match_parent"
-                    android:layout_height="140dp">
+                    android:layout_height="match_parent">
 
                 </com.youth.banner.Banner>
 
@@ -66,7 +66,7 @@
 
 
         </RelativeLayout>
-
+        <include layout="@layout/item_underline"/>
         <LinearLayout
             android:layout_marginBottom="@dimen/title_margin_top"
             android:orientation="horizontal"

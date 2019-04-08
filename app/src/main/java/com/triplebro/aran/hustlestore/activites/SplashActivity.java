@@ -9,6 +9,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.RelativeLayout;
 
+import com.idescout.sql.SqlScoutServer;
 import com.triplebro.aran.hustlestore.R;
 
 
@@ -29,6 +30,8 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash);
+        //添加数据库动态访问插件
+        SqlScoutServer.create(this, getPackageName());
         RelativeLayout layoutSplash=findViewById(R.id.activiaty_splash);
         AlphaAnimation alphaAnimation=new AlphaAnimation(0.1f,1.0f);
         alphaAnimation.setDuration(1500);//设置动画播放时长1000毫秒（1秒）
