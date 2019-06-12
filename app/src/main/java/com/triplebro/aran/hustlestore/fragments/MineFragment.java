@@ -18,8 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.triplebro.aran.hustlestore.R;
+import com.triplebro.aran.hustlestore.activites.AboutUsActivity;
 import com.triplebro.aran.hustlestore.activites.AddGoodsActivity;
 import com.triplebro.aran.hustlestore.activites.FirstActivity;
+import com.triplebro.aran.hustlestore.activites.MyOrderActivity;
 import com.triplebro.aran.hustlestore.activites.MycardActivity;
 import com.triplebro.aran.hustlestore.activites.SendGoodsActivity;
 import com.triplebro.aran.hustlestore.activites.SetupActivity;
@@ -60,6 +62,14 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     private LinearLayout sll_mySends;
     private TextView tv_mySends;
     private ImageView iv_mySends;
+    private TextView tv_aboutus;
+    private ImageView im_aboutus;
+    private LinearLayout ll_aboutus;
+    private LinearLayout sll_aboutus;
+    private Button bt_myorder;
+    private LinearLayout ll_myorder;
+    private RelativeLayout rl_myorder;
+    private TextView tv_myorder;
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
@@ -80,6 +90,17 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         sll_mySends = fragment_mine.findViewById(R.id.sll_mySends);
         tv_mySends = fragment_mine.findViewById(R.id.tv_mySends);
         iv_mySends = fragment_mine.findViewById(R.id.iv_mySends);
+
+        tv_aboutus = fragment_mine.findViewById(R.id.tv_aboutus);
+        im_aboutus = fragment_mine.findViewById(R.id.im_aboutus);
+        ll_aboutus = fragment_mine.findViewById(R.id.ll_aboutus);
+        sll_aboutus = fragment_mine.findViewById(R.id.sll_aboutus);
+
+        bt_myorder = fragment_mine.findViewById(R.id.bt_myorder);
+        ll_myorder = fragment_mine.findViewById(R.id.ll_myorder);
+        rl_myorder = fragment_mine.findViewById(R.id.rl_myorder);
+        tv_myorder = fragment_mine.findViewById(R.id.tv_myorder);
+
 
         setOnclick();
 
@@ -124,6 +145,14 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         ll_mySends.setOnClickListener(this);
         sll_mySends.setOnClickListener(this);
         tv_mySends.setOnClickListener(this);
+        im_aboutus.setOnClickListener(this);
+        ll_aboutus.setOnClickListener(this);
+        sll_aboutus.setOnClickListener(this);
+        tv_aboutus.setOnClickListener(this);
+        bt_myorder.setOnClickListener(this);
+        ll_myorder.setOnClickListener(this);
+        rl_myorder.setOnClickListener(this);
+        tv_myorder.setOnClickListener(this);
     }
 
 
@@ -179,6 +208,22 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                 Intent mySends = new Intent(getActivity(),SendGoodsActivity.class);
                 startActivity(mySends);
                 break;
+            case R.id.im_aboutus:
+            case R.id.ll_aboutus:
+            case R.id.sll_aboutus:
+            case R.id.tv_aboutus:
+                Intent intent = new Intent(getActivity(), AboutUsActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.bt_myorder:
+            case R.id.ll_myorder:
+            case R.id.rl_myorder:
+            case R.id.tv_myorder:
+                Intent intent1 = new Intent(getActivity(), MyOrderActivity.class);
+                startActivity(intent1);
+                break;
+
         }
     }
 }

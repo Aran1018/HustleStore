@@ -45,4 +45,13 @@ dependencies {
     releaseImplementation 'com.idescout.sql:sqlscout-server-noop:4.1'
     //sweetalert
     implementation 'com.github.f0ris.sweetalert:library:1.5.1'
+    implementation('com.github.the-pig-of-jungle.smart-show:topbar:2.6.7') {
+
+        exclude group: 'com.android.support'
+
+    }
+
+    //添加与你项目匹配的design依赖库的相应版本
+
+    implementation 'com.android.support:design:28.0.0'
 }

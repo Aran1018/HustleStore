@@ -175,14 +175,15 @@
 
 
 
-    <color name="ButtonDeal">#00c9e3</color> <!--浅绿色 -->
+    <color name="ButtonDeal">#333333</color> <!--浅绿色 -->
 
     <color name="pricecolor">#fd5632</color> <!--价格颜色 -->
     <color name="item_background">#d5f1f1f1</color> <!--价格颜色 -->
     <color name="test">#d5f1f1f1</color> <!--价格颜色 -->
 
 
-
+    <color name="load_success">#03a44e</color>
+    <color name="load_failure">#de0e26</color>
 
 
 

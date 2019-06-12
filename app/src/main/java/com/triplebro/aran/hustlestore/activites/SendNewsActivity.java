@@ -17,6 +17,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -57,6 +58,7 @@ public class SendNewsActivity extends BaseActivity {
 
     private ImageView iv_willsend;
     private Button bt_send_new;
+    private EditText ed_send_new;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +66,7 @@ public class SendNewsActivity extends BaseActivity {
         setContentView(R.layout.activity_sendthings);
         bt_send_new = findViewById(R.id.bt_send_new);
         iv_willsend = findViewById(R.id.iv_willsend);
+        ed_send_new = findViewById(R.id.ed_send_new);
         iv_willsend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +88,7 @@ public class SendNewsActivity extends BaseActivity {
 
                 contentValues.put("content_img", send_img);
                 contentValues.put("user_id", userId);
+                contentValues.put("publish_content", ed_send_new.getText().toString().trim());
                 contentValues.put("publish_time", formatter.format(curDate));
                 long publishContent = writableDatabase.insert("PublishContent", null, contentValues);
                 if (publishContent > 0) {

@@ -19,27 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="40dp">
 
-            <RelativeLayout
-                android:id="@+id/bt_mine_message"
-                android:layout_alignParentRight="true"
-                android:layout_centerInParent="true"
-                android:layout_marginRight="@dimen/title_margin10dp"
-
-                android:layout_width="40dp"
-                android:layout_height="40dp">
-                <Button
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/ic_getmessage" />
-
-            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/rl_set"
                 android:layout_alignParentRight="true"
-                android:layout_alignRight="@id/bt_mine_message"
-                android:layout_marginRight="60dp"
+                android:layout_marginRight="10dp"
                 android:layout_centerInParent="true"
                 android:layout_width="40dp"
                 android:layout_height="40dp">
@@ -132,24 +116,28 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"/>
             <LinearLayout
+                android:id="@+id/ll_myorder"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <RelativeLayout
+                    android:id="@+id/rl_myorder"
                     android:layout_width="64dp"
                     android:layout_height="64dp">
                     <Button
-                        android:background="@drawable/ic_jian"
+                        android:id="@+id/bt_myorder"
+                        android:background="@drawable/bt_myorder"
                         android:layout_centerInParent="true"
                         android:layout_width="30dp"
                         android:layout_height="30dp" />
 
                 </RelativeLayout>
                 <TextView
+                    android:id="@+id/tv_myorder"
                     android:textColor="@color/gray5"
                     android:textStyle="bold"
-                    android:text="已鉴商品"
+                    android:text="我的订单"
                     android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -175,7 +163,7 @@
                     android:id="@+id/iv_mySends"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@mipmap/ic_launcher_round" />
+                    android:src="@drawable/bt_news" />
 
                 <TextView
                     android:id="@+id/tv_mySends"
@@ -183,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/title_margin10dp"
-                    android:text="我的发布"
+                    android:text="我的动态"
                     android:textColor="@color/gray3" />
 
                 <RelativeLayout
@@ -205,45 +193,45 @@
         <include layout="@layout/item_underline" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:padding="@dimen/title_margin10dp">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:padding="@dimen/title_margin10dp">-->
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
+            <!--<LinearLayout-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1">-->
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@mipmap/ic_launcher_round" />
+                <!--<ImageView-->
+                    <!--android:layout_width="30dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:src="@mipmap/ic_launcher_round" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/title_margin10dp"
-                    android:text="我的收藏"
-                    android:textColor="@color/gray3" />
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginLeft="@dimen/title_margin10dp"-->
+                    <!--android:text="我的收藏"-->
+                    <!--android:textColor="@color/gray3" />-->
 
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1">-->
 
-                    <ImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/right" />
-                </RelativeLayout>
+                    <!--<ImageView-->
+                        <!--android:layout_width="16dp"-->
+                        <!--android:layout_height="16dp"-->
+                        <!--android:layout_alignParentRight="true"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:src="@drawable/right" />-->
+                <!--</RelativeLayout>-->
 
-            </LinearLayout>
-        </LinearLayout>
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
     </LinearLayout>
     <include layout="@layout/item_backgroud" />
     <LinearLayout
@@ -253,27 +241,31 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/ll_aboutus"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
             android:padding="@dimen/title_margin10dp">
 
             <LinearLayout
+                android:id="@+id/sll_aboutus"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
                 <ImageView
+                    android:id="@+id/im_aboutus"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@mipmap/ic_launcher_round" />
+                    android:src="@drawable/bt_about_us" />
 
                 <TextView
+                    android:id="@+id/tv_aboutus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/title_margin10dp"
-                    android:text="我的收藏"
+                    android:text="关于我们"
                     android:textColor="@color/gray3" />
 
                 <RelativeLayout

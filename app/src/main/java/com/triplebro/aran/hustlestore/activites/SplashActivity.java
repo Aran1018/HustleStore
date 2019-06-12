@@ -1,7 +1,9 @@
 package com.triplebro.aran.hustlestore.activites;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Window;
@@ -32,8 +34,8 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
         //添加数据库动态访问插件
         SqlScoutServer.create(this, getPackageName());
-        RelativeLayout layoutSplash=findViewById(R.id.activiaty_splash);
-        AlphaAnimation alphaAnimation=new AlphaAnimation(0.1f,1.0f);
+        RelativeLayout layoutSplash = findViewById(R.id.activiaty_splash);
+        AlphaAnimation alphaAnimation = new AlphaAnimation(0.1f, 1.0f);
         alphaAnimation.setDuration(1500);//设置动画播放时长1000毫秒（1秒）
         layoutSplash.startAnimation(alphaAnimation);
         alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
@@ -44,8 +46,17 @@ public class SplashActivity extends BaseActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                Intent intent = new Intent(SplashActivity.this,MainActivity.class);
-                startActivity(intent);
+                SharedPreferences sharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+
+                String user_id = sharedPreferences.getString("user_id", "");
+                if (user_id.isEmpty()){
+                    Intent intent = new Intent(SplashActivity.this, FirstActivity.class);
+                    startActivity(intent);
+
+                }else {
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
                 finish();
             }
 

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_back"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#20ffffff">
+
+            <Button
+                android:id="@+id/bt_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/tv_find"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:gravity="center"
+                android:text="确认订单"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <include layout="@layout/item_underline" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="@dimen/title_margin10dp">
+
+        <TextView
+            android:id="@+id/tv_shou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="收货人："
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_ADD_userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_toEndOf="@id/tv_shou"
+            android:text="ARAN"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_ADD_tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/title_text_margin20dp"
+
+            android:text="188****6023"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+        <!--<ImageView-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:id="@+id/iv_in"-->
+        <!--android:src="@drawable/ic_back"-->
+        <!--android:layout_width="25dp"-->
+        <!--android:layout_height="25dp" />-->
+        <TextView
+            android:id="@+id/tv_ADD_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentBottom="true"
+            android:text="辽宁省沈阳市东陵区万锦紫圆"
+            android:textColor="#000000" />
+    </RelativeLayout>
+
+    <include layout="@layout/item_underline" />
+    <!--——————————————————收货地址——————————————————-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:padding="@dimen/title_margin10dp">
+
+        <ImageView
+            android:id="@+id/iv_goodsImg"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/user_img" />
+
+        <TextView
+            android:id="@+id/tv_goodsName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/title_text_margin20dp"
+            android:layout_toEndOf="@id/iv_goodsImg"
+
+            android:maxLines="2"
+            android:text="这是商品的名称"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tv_deal_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginLeft="@dimen/title_text_margin20dp"
+            android:layout_toEndOf="@id/iv_goodsImg"
+            android:text="2019.4.11   13:30"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tv_deal_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+
+            android:layout_marginRight="20dp"
+            android:text="￥1899"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <include layout="@layout/item_underline" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="本商品提供者："
+            android:textColor="@color/gray6"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <ImageView
+                android:id="@+id/iv_seller_img"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/user_img" />
+
+            <TextView
+                android:id="@+id/tv_seller"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/title_margin10dp"
+                android:layout_toEndOf="@id/iv_seller_img"
+                android:text="用户小明"
+                android:textColor="#000000" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/submit_deal"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/bg_confirmbt_noshadow"
+        android:text="确认购买"
+        android:textColor="#fff" />
+</LinearLayout>

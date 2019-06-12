@@ -89,7 +89,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="货号:"
+                android:text="品名:"
                 android:textColor="#000"
                 android:textSize="25dp"
                 android:textStyle="bold" />
@@ -97,27 +97,28 @@
             <EditText
                 android:id="@+id/ed_goodsId"
                 android:focusable="true"
+                android:inputType="textEmailAddress"
                 android:focusableInTouchMode="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edittext_bg_dark" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="标签（新品/二手）:"
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="标签（新品/二手）:"-->
 
-                android:textColor="#000"
-                android:textSize="25dp"
-                android:textStyle="bold" />
+                <!--android:textColor="#000"-->
+                <!--android:textSize="25dp"-->
+                <!--android:textStyle="bold" />-->
 
-            <EditText
-                android:id="@+id/ed_goodsLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edittext_bg_dark" />
+            <!--<EditText-->
+                <!--android:id="@+id/ed_goodsLabel"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:background="@drawable/edittext_bg_dark" />-->
 
 
 
@@ -135,6 +136,7 @@
             <EditText
                 android:id="@+id/ed_goodsPrice"
                 android:layout_width="match_parent"
+                android:inputType="number"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edittext_bg_dark" />

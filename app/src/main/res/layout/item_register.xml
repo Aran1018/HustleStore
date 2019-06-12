@@ -16,6 +16,7 @@
         <EditText
             android:id="@+id/ed_register_phonenumber"
             android:layout_width="match_parent"
+            android:inputType="number"
             android:layout_height="50dp"
             android:background="@drawable/edittext_bg_light"
             android:hint="请输入手机号"
@@ -36,6 +37,7 @@
         <EditText
             android:id="@+id/ed_register_password"
             android:hint="请输入密码"
+            android:inputType="numberPassword"
             android:singleLine="true"
             android:background="@drawable/edittext_bg_light"
             android:layout_width="match_parent"

@@ -5,13 +5,16 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.triplebro.aran.hustlestore.beans.DealInfo;
 import com.triplebro.aran.hustlestore.beans.Goods;
 import com.triplebro.aran.hustlestore.beans.GoodsImg;
 import com.triplebro.aran.hustlestore.beans.TrafficData;
 import com.triplebro.aran.hustlestore.beans.UserInfo;
 import com.triplebro.aran.hustlestore.databases.MyOpenHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,6 +41,21 @@ public class GoodsInfoManager {
 
     }
 
+    public DealInfo getDealInfo(String goods_id){
+
+        DealInfo dealInfo = new DealInfo();
+        dealInfo.setGoods_id(goods_id);
+        SharedPreferences sharedPreferences = context.getSharedPreferences("userInfo",Context.MODE_PRIVATE);
+        String user_id = sharedPreferences.getString("user_id", "");
+        dealInfo.setBuyer_id(user_id);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd   HH:mm:ss");
+        Date curDate = new Date(System.currentTimeMillis());
+        dealInfo.setOrder_date(formatter.format(curDate));
+
+
+
+        return dealInfo;
+    }
 
     public List<Goods> getGoodsList() {
         List<Goods> goodsList = new ArrayList<>();

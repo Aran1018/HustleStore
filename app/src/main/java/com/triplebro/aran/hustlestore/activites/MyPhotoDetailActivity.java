@@ -94,17 +94,6 @@ public class MyPhotoDetailActivity extends BaseActivity implements View.OnClickL
 
         Glide.with(this).load(int_path).bitmapTransform(new CropSquareTransformation(this)).into(iv_content_img);
         queryDetailInfo();
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            sv_item.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-//                @Override
-//                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-//                    AnimationUtils.TransparentUtils(mDistanceY,scrollY,rl_titlebar);
-//                    AnimationUtils.TransparentUtils(mDistanceY,scrollY,tv_find);
-//                    AnimationUtils.TransparentUtils(mDistanceY,scrollY,rl_find_send);
-//                    AnimationUtils.TransparentUtils(mDistanceY,scrollY,bt_find_send);
-//                }
-//            });
-//        }
     }
 
 

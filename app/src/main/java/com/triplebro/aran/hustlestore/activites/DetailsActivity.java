@@ -5,6 +5,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.NestedScrollView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -13,9 +16,13 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.triplebro.aran.hustlestore.R;
+import com.triplebro.aran.hustlestore.adapter.MyListAdapter;
+import com.triplebro.aran.hustlestore.beans.ContextInfo;
+import com.triplebro.aran.hustlestore.beans.DealInfo;
 import com.triplebro.aran.hustlestore.beans.Goods;
 import com.triplebro.aran.hustlestore.beans.GoodsImg;
 import com.triplebro.aran.hustlestore.manager.GoodsInfoManager;
+import com.triplebro.aran.hustlestore.manager.ListManager;
 import com.triplebro.aran.hustlestore.utils.AnimationUtils;
 import com.triplebro.aran.hustlestore.utils.GetPathFromUri;
 import com.triplebro.aran.hustlestore.utils.GlideImageLoader;
@@ -45,7 +52,7 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
     private List<String> imgLists;
     private Button bt_back;
     private RelativeLayout rl_back;
-    private ScrollView sv_details;
+    private NestedScrollView sv_details;
     private int mDistanceY;
     private RelativeLayout rl_details_titlebar;
     private Button bt_detailActivity_deal;
@@ -56,11 +63,14 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
     private TextView tv_goods_id;
     private Goods goods;
     private GoodsImg goodsImg;
+    private DealInfo dealInfo;
+    public static DetailsActivity instance;
+    private RecyclerView rcv_findingList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        instance=this;
         Intent intent = getIntent();
         goods_id = intent.getStringExtra("goods_id");
         user_id = intent.getStringExtra("user_id");
@@ -69,6 +79,7 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         queryGoodsData();
         setOnclick();
         initImageList();
+        getGoodsDataToDeal();
 
     }
 
@@ -77,6 +88,7 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         rl_back = findViewById(R.id.rl_back);
         sv_details = findViewById(R.id.sv_details);
         bt_detailActivity_deal = findViewById(R.id.bt_detailActivity_deal);
+        bt_detailActivity_deal.setOnClickListener(this);
         rl_details_titlebar = findViewById(R.id.rl_details_titlebar);
         bt_back.bringToFront();
         rl_back.bringToFront();
@@ -95,9 +107,27 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         tv_goodsName = findViewById(R.id.tv_goodsName);
         tv_price = findViewById(R.id.tv_price);
         tv_goods_id = findViewById(R.id.tv_goods_id);
+
+        rcv_findingList = findViewById(R.id.rcv_findingList);
+
+
+        queryList();
     }
 
-
+    private void queryList() {
+        List<ContextInfo> contextInfoList = new ListManager(this).getRandomContextInfoList();
+        List<ContextInfo> fullContextInfoList = new ListManager(this).getFullContextInfoList(contextInfoList);
+        MyListAdapter myListAdapter = new MyListAdapter(this, fullContextInfoList);
+        LinearLayoutManager manager = new LinearLayoutManager(this) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        rcv_findingList.setLayoutManager(manager);
+        rcv_findingList.setAdapter(myListAdapter);
+    }
 
 
     private void setOnclick() {
@@ -128,7 +158,11 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         GoodsInfoManager goodsInfoManager = new GoodsInfoManager(this);
         goods = goodsInfoManager.queryGoodsDetails(goods_id);
         goodsImg = goodsInfoManager.queryGoodsImgDetails(goods_id);
+    }
 
+    private void getGoodsDataToDeal(){
+        GoodsInfoManager goodsInfoManager = new GoodsInfoManager(this);
+        dealInfo = goodsInfoManager.getDealInfo(goods.getGoods_id());
     }
 
     @Override
@@ -139,7 +173,13 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
                 finish();
                 break;
             case R.id.bt_detailActivity_deal:
-                startActivity(new Intent(this,WebViewActivity.class));
+                Intent intent = new Intent(this, CheckDealActivity.class);
+                int user_id = goods.getUser_id();
+                intent.putExtra("seller_id",user_id+"");
+                intent.putExtra("buyer_id", dealInfo.getBuyer_id());
+                intent.putExtra("goods_id", dealInfo.getGoods_id());
+                intent.putExtra("order_date",dealInfo.getOrder_date());
+                startActivity(intent);
                 break;
         }
     }

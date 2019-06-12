@@ -169,7 +169,7 @@ public class ListFragment extends BaseFragment implements View.OnClickListener {
 //
 //                Glide.with(this).load(photos.get(0)).bitmapTransform(new CropSquareTransformation(getActivity())).into(iv_show1);
 //                Glide.with(this).load(photos.get(1)).bitmapTransform(new CropSquareTransformation(getActivity())).into(iv_show2);
-//                Glide.with(this).load(photos.get(2)).bitmapTransform(new CropSquareTransformation(getActivity())).into(iv_show3);
+//                Glide.with(this).load(photos.g    et(2)).bitmapTransform(new CropSquareTransformation(getActivity())).into(iv_show3);
 //                Glide.with(this).load(photos.get(3)).bitmapTransform(new CropSquareTransformation(getActivity())).into(iv_show4);
 //                Glide.with(this).load(photos.get(4)).bitmapTransform(new CropSquareTransformation(getActivity())).into(iv_show5);
 //            }

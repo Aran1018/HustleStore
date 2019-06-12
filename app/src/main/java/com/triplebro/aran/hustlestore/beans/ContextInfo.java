@@ -33,12 +33,13 @@ public class ContextInfo {
     public ContextInfo() {
     }
 
-    public ContextInfo(String userHead, String userName, String content_img, String user_id, String publish_content) {
+    public ContextInfo(String userHead, String userName, String content_img, String user_id, String publish_content,String publish_id) {
         this.userHead = userHead;
         this.userName = userName;
         this.content_img = content_img;
         this.user_id = user_id;
         this.publish_content = publish_content;
+        this.publish_id = publish_id;
     }
 
     public String getUser_introduction() {

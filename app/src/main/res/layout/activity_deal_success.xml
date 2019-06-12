@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_yi"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+    <com.triplebro.aran.hustlestore.widget.CustomStatusView
+        android:id="@+id/as_status"
+        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="3dp"
+        app:load_failure_color="@color/load_failure"
+        app:load_success_color="@color/load_success"
+        app:progress_color="@color/load_success"
+        app:progress_radius="40dp"
+        app:progress_width="3dp" />
+
+    <TextView
+        android:textColor="@color/gray5"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/title_text_margin20dp"
+        android:id="@+id/tv_thanks"
+        android:textSize="25dp"
+        android:text="感谢您的支持!"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_marginTop="80dp"
+        android:background="@drawable/bg_confirmbt"
+        android:id="@+id/bt_go_back_home"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:text="回到主页"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_120dp" />
+
+</LinearLayout>

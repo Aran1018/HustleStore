@@ -94,6 +94,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="25dp"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:textColor="@color/gray5"
+            android:id="@+id/tv_publish_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:singleLine="true"
+            android:text="易，是一个生活方式" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginTop="@dimen/title_text_margin20dp"
         android:orientation="horizontal">
 
         <TextView

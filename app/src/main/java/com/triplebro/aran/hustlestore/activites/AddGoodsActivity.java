@@ -55,7 +55,7 @@ public class AddGoodsActivity extends BaseActivity implements View.OnClickListen
     private SharedPreferences.Editor edit;
     private EditText ed_goodsId;
     private EditText ed_goodsPrice;
-    private EditText ed_goodsLabel;
+//    private EditText ed_goodsLabel;
     int SetCount = 0;
     private Button bt_submit_insert;
 
@@ -87,7 +87,7 @@ public class AddGoodsActivity extends BaseActivity implements View.OnClickListen
         iv_sec4 = findViewById(R.id.iv_sec4);
         ed_goodsId = findViewById(R.id.ed_goodsId);
         ed_goodsPrice = findViewById(R.id.ed_goodsPrice);
-        ed_goodsLabel = findViewById(R.id.ed_goodsLabel);
+//        ed_goodsLabel = findViewById(R.id.ed_goodsLabel);
         bt_submit_insert = findViewById(R.id.bt_submit_insert);
         iv_main.setOnClickListener(this);
         iv_sec1.setOnClickListener(this);
@@ -131,9 +131,9 @@ public class AddGoodsActivity extends BaseActivity implements View.OnClickListen
                 if (ed_goodsId.getText().toString().isEmpty()){
                     Toast.makeText(this, "请填写货号", Toast.LENGTH_SHORT).show();
                 }
-                if (ed_goodsLabel.getText().toString().isEmpty()){
-                    Toast.makeText(this, "请填写标签", Toast.LENGTH_SHORT).show();
-                }
+//                if (ed_goodsLabel.getText().toString().isEmpty()){
+//                    Toast.makeText(this, "请填写标签", Toast.LENGTH_SHORT).show();
+//                }
                 if (ed_goodsPrice.getText().toString().isEmpty()){
                     Toast.makeText(this, "请填写价格", Toast.LENGTH_SHORT).show();
                 }
@@ -142,7 +142,7 @@ public class AddGoodsActivity extends BaseActivity implements View.OnClickListen
                 }
                 if (
                         !ed_goodsId.getText().toString().isEmpty()&&
-                        !ed_goodsLabel.getText().toString().isEmpty()&&
+//                        !ed_goodsLabel.getText().toString().isEmpty()&&
                         !ed_goodsPrice.getText().toString().isEmpty()&&
                         SetCount==5
                         )
@@ -152,7 +152,7 @@ public class AddGoodsActivity extends BaseActivity implements View.OnClickListen
                     String goodsID = String.valueOf(java.util.UUID.randomUUID().toString());
                     goodsInfo.put("goods_id",goodsID);
                     goodsInfo.put("goods_price",ed_goodsPrice.getText().toString());
-                    goodsInfo.put("goods_label", ed_goodsLabel.getText().toString());
+//                    goodsInfo.put("goods_label", ed_goodsLabel.getText().toString());
                     goodsInfo.put("user_id",userInfo.getString("user_id",""));
                     goodsInfo.put("goods_Name",ed_goodsId.getText().toString());
                     goodsImg.put("goods_id",goodsID);

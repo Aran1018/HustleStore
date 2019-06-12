@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -64,9 +66,10 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
     private Button bt_serch;
     private TextView tv_title_text;
     private RecyclerView rv_mainlist;
-    private ScrollView sl_main;
+    private NestedScrollView sl_main;
     private Banner bn_main;
     private List<String> imgLists;
+    private ImageView iv_newproduct;
 
 
     /**
@@ -80,9 +83,6 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragment_main = inflater.inflate(R.layout.fragment_main, null);
         initView();
-//        initData();
-//        initAdapter();
-//        initTimeUtils();
         initBanner();
         setOnclickListener();
         return fragment_main;
@@ -91,12 +91,10 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
     private void initBanner() {
         imgLists = new ArrayList<String>();
 
-        //String pathByUri = GetPathFromUri.getPathByUri(Uri.parse("content://media/external/images/media/549"), getActivity());
-        //imgLists.add(pathByUri);
         imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/imgs/ad/ad1.png");
         imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/imgs/ad/ad2.png");
-        imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/imgs/ad/ad1.png");
-        imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/imgs/ad/ad2.png");
+        imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/imgs/ad/ad3.png");
+        imgLists.add("/data/data/com.triplebro.aran.hustlestore/cache/imgs/ad/ad5.png");
         bn_main.setImageLoader(new GlideImageLoader());
         bn_main.setImages(imgLists);
         bn_main.setOnBannerListener(new OnBannerListener() {
@@ -119,8 +117,21 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
         bt_serch = fragment_main.findViewById(R.id.bt_serch);
         bn_main = fragment_main.findViewById(R.id.bn_main);
         rv_mainlist = fragment_main.findViewById(R.id.rv_mainlist);
+        iv_newproduct = fragment_main.findViewById(R.id.iv_newproduct);
+        iv_newproduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                startActivity(intent);
+            }
+        });
         Scroller scroller = new Scroller(getActivity());
         scroller.setFriction(1000);
+        initData();
+
+    }
+
+    private void initData() {
         List<Goods> goodsList = new GoodsInfoManager(getActivity()).getGoodsList();
         List<Goods> goodsImg = new GoodsInfoManager(getActivity()).getGoodsImg(goodsList);
         List<Goods> userName = new GoodsInfoManager(getActivity()).getUserName(goodsImg);
@@ -134,9 +145,13 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
         manager.setOrientation(GridLayoutManager.VERTICAL);
         rv_mainlist.setLayoutManager(manager);
         rv_mainlist.setAdapter(mainRecyclerVIewAdapter);
-
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        initData();
+    }
 
     private void setOnclickListener() {
         bt_serch.setOnClickListener(this);

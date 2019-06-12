@@ -33,7 +33,7 @@ public class ListManager {
         List<ContextInfo> contextInfos = new ArrayList<>();
         MyOpenHelper myOpenHelper = new MyOpenHelper(context);
         SQLiteDatabase writableDatabase = myOpenHelper.getWritableDatabase();
-        Cursor publishContent = writableDatabase.query("PublishContent", new String[]{"content_img", "publish_content", "user_id","publish_time"}, null, null, null, null, "publish_time desc");
+        Cursor publishContent = writableDatabase.query("PublishContent", new String[]{"content_img", "publish_content", "user_id","publish_time","publish_id"}, null, null, null, null, "publish_time desc");
         if (publishContent != null && publishContent.getCount() > 0) {
 
             while (publishContent.moveToNext()) {
@@ -42,6 +42,31 @@ public class ListManager {
                 contextInfo.setPublish_content(publishContent.getString(1));
                 String string = publishContent.getString(2);
                 contextInfo.setPublish_time(publishContent.getString(3));
+                contextInfo.setPublish_id(publishContent.getString(4));
+                contextInfo.setUser_id(string);
+                System.out.println("===============" + contextInfo.toString());
+                contextInfos.add(contextInfo);
+
+            }
+        }
+        writableDatabase.close();
+        return contextInfos;
+
+    }
+    public List<ContextInfo> getRandomContextInfoList() {
+        List<ContextInfo> contextInfos = new ArrayList<>();
+        MyOpenHelper myOpenHelper = new MyOpenHelper(context);
+        SQLiteDatabase writableDatabase = myOpenHelper.getWritableDatabase();
+        Cursor publishContent = writableDatabase.query("PublishContent", new String[]{"content_img", "publish_content", "user_id","publish_time","publish_id"}, null, null, null, null, "RANDOM()");
+        if (publishContent != null && publishContent.getCount() > 0) {
+
+            while (publishContent.moveToNext()) {
+                ContextInfo contextInfo = new ContextInfo();
+                contextInfo.setContent_img(publishContent.getString(0));
+                contextInfo.setPublish_content(publishContent.getString(1));
+                String string = publishContent.getString(2);
+                contextInfo.setPublish_time(publishContent.getString(3));
+                contextInfo.setPublish_id(publishContent.getString(4));
                 contextInfo.setUser_id(string);
                 System.out.println("===============" + contextInfo.toString());
                 contextInfos.add(contextInfo);
@@ -56,7 +81,7 @@ public class ListManager {
         List<ContextInfo> contextInfos = new ArrayList<>();
         MyOpenHelper myOpenHelper = new MyOpenHelper(context);
         SQLiteDatabase writableDatabase = myOpenHelper.getWritableDatabase();
-        Cursor publishContent = writableDatabase.query("PublishContent", new String[]{"content_img", "publish_content", "user_id","publish_time"}, "user_id=?", new String[]{userId}, null, null, "publish_time desc");
+        Cursor publishContent = writableDatabase.query("PublishContent", new String[]{"content_img", "publish_content", "user_id","publish_time","publish_id"}, "user_id=?", new String[]{userId}, null, null, "publish_time desc");
         if (publishContent != null && publishContent.getCount() > 0) {
 
             while (publishContent.moveToNext()) {
@@ -65,6 +90,7 @@ public class ListManager {
                 contextInfo.setPublish_content(publishContent.getString(1));
                 String string = publishContent.getString(2);
                 contextInfo.setPublish_time(publishContent.getString(3));
+                contextInfo.setPublish_id(publishContent.getString(4));
                 contextInfo.setUser_id(string);
                 System.out.println("===============" + contextInfo.toString());
                 contextInfos.add(contextInfo);

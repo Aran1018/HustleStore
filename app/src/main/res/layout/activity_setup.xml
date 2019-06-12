@@ -14,12 +14,12 @@
             android:id="@+id/bt_back"
             android:layout_centerVertical="true"
             android:background="@drawable/ic_back"
-            android:layout_width="30dp"
-            android:layout_height="30dp" />
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
         <TextView
-            android:text="发现"
+            android:text="修改资料"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="50dp" />
@@ -40,9 +40,10 @@
             android:layout_weight="1">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@mipmap/ic_launcher_round" />
+                android:layout_marginTop="5dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/bt_changedata" />
 
             <TextView
                 android:id="@+id/tv_changDataa"
@@ -50,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/title_margin10dp"
-                android:text="修改资料"
+                android:text="设置"
                 android:textColor="@color/gray3" />
 
             <RelativeLayout

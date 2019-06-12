@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.triplebro.aran.hustlestore.R;
 import com.triplebro.aran.hustlestore.activites.AllPhotoDetailActivity;
 import com.triplebro.aran.hustlestore.activites.AllcardActivity;
+import com.triplebro.aran.hustlestore.activites.UserCardActivity;
 import com.triplebro.aran.hustlestore.beans.ContextInfo;
 import com.triplebro.aran.hustlestore.beans.TrafficData;
 import com.triplebro.aran.hustlestore.utils.GeneralUtils;
@@ -58,17 +59,30 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
     public void onBindViewHolder(MyListAdapter.ViewHolder holder, final int position) {
         Glide.with(context).load(list.get(position).getContent_img()).bitmapTransform(new CropSquareTransformation(context)).into(holder.content_img);
         Glide.with(context).load(list.get(position).getUserHead()).bitmapTransform(new GlideCircleTransform(context)).into(holder.rvimg_list_userIcon);
+
         holder.tv_userName.setText(list.get(position).getUserName());
         holder.tv_user_introduction.setText(list.get(position).getUser_introduction());
         holder.tv_findings_date.setText(GeneralUtils.GetStringDate(list.get(position).getPublish_time()));
         String[] time=list.get(position).getPublish_time().split("   ");
         holder.tv_findings_time.setText(time[1].substring(0,5));
-        holder.rvimg_list_userIcon.setOnClickListener(new View.OnClickListener() {
+        holder.tv_publish_content.setText(list.get(position).getPublish_content());
+        holder.bt_comments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, AllPhotoDetailActivity.class);
                 intent.putExtra("int_path",list.get(position).getContent_img());
                 intent.putExtra("publish_id",list.get(position).getPublish_id());
+                intent.putExtra("user_id",list.get(position).getUser_id());
+                context.startActivity(intent);
+            }
+        });
+
+        holder.rvimg_list_userIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, UserCardActivity.class);
+
+                intent.putExtra("user_id",list.get(position).getUser_id());
                 context.startActivity(intent);
             }
         });
@@ -100,6 +114,7 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
         TextView tv_findings_time;
         private final LinearLayout ll_comments;
         private final Button bt_comments;
+        private final TextView tv_publish_content;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -111,6 +126,7 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
             tv_findings_date = itemView.findViewById(R.id.tv_findings_date);
             tv_findings_time = itemView.findViewById(R.id.tv_findings_time);
             rvimg_list_userIcon = itemView.findViewById(R.id.rvimg_list_userIcon);
+            tv_publish_content = itemView.findViewById(R.id.tv_publish_content);
             tv_user_introduction = itemView.findViewById(R.id.tv_user_introduction);
         }
 
@@ -124,10 +140,6 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
                     }
                 });
             }
-        }
-
-        public void setBt_comments(){
-
         }
 
     }

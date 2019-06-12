@@ -70,7 +70,7 @@ public class MainRecyclerVIewAdapter extends RecyclerView.Adapter<MainRecyclerVI
         Glide.with(context).load(goodsImg_mainpath).bitmapTransform(new CropSquareTransformation(context)).into(holder.iv_goodsimg);
         holder.tv_userName.setText(user_name);
         holder.tv_goodsName.setText(goods_name);
-        holder.tv_price.setText(goods_price);
+        holder.tv_price.setText("￥"+goods_price);
     }
 
     @Override
@@ -82,25 +82,6 @@ public class MainRecyclerVIewAdapter extends RecyclerView.Adapter<MainRecyclerVI
     public long getItemId(int position) {
         return (position);
     }
-//
-//    @Override
-//    public void onClick(View v) {
-//        switch (v.getId()){
-//            case R.id.iv_goodsimg:
-//            case R.id.iv_userHead:
-//            case R.id.tv_goodsName:
-//            case R.id.tv_userName:
-//            case R.id.tv_price:
-//            case R.id.ll_goodsView:
-//            case R.id.tv_likeCounts:
-//                Intent intent = new Intent(context, DetailsActivity.class);
-//                int user_id = goodsList.get(1).getUser_id();
-//                String goods_id=goodsList.get(1).getGoods_id();
-//                intent.putExtra("user_id",user_id);
-//                intent.putExtra("goods_id",goods_id);
-//                context.startActivity(intent);
-//        }
-//    }
 
     class MyHolder extends RecyclerView.ViewHolder {
 
@@ -130,14 +111,6 @@ public class MainRecyclerVIewAdapter extends RecyclerView.Adapter<MainRecyclerVI
                     context.startActivity(intent);
                 }
             });
-//            setOnclick();
         }
-//        private void setOnclick(){
-//           iv_goodsimg.setOnClickListener(MainRecyclerVIewAdapter.this);
-//            ll_goodsView.setOnClickListener(MainRecyclerVIewAdapter.this);
-//            tv_goodsName.setOnClickListener(MainRecyclerVIewAdapter.this);
-//            tv_userName.setOnClickListener(MainRecyclerVIewAdapter.this);
-//            tv_price.setOnClickListener(MainRecyclerVIewAdapter.this);
-//        }
     }
 }

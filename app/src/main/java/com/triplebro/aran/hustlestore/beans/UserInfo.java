@@ -18,6 +18,7 @@ public class UserInfo {
     String user_introduction;
     String user_Head;
 
+
     public UserInfo() {
 
     }

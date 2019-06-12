@@ -1,47 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <RelativeLayout
-        android:layout_marginTop="@dimen/title_margin10dp"
-        android:layout_marginRight="@dimen/title_margin10dp"
-        android:layout_marginLeft="@dimen/title_margin10dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/title_margin10dp"
+        android:layout_marginRight="@dimen/title_margin10dp"
+        android:layout_marginTop="@dimen/title_margin10dp">
+
         <Button
             android:id="@+id/bt_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_centerVertical="true"
-            android:background="@drawable/ic_back"
-            android:layout_width="30dp"
-            android:layout_height="30dp" />
+            android:background="@drawable/ic_back" />
+
         <TextView
-            android:text="发现"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="修改资料"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
 
     </RelativeLayout>
-    <include layout="@layout/item_underline"/>
-    <TextView
-        android:layout_marginTop="10dp"
-        android:text="修改用户名："
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
+    <include layout="@layout/item_underline" />
+
     <EditText
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:id="@+id/et_chang_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/edittext_bg_dark"
+        android:hint="请输入昵称" />
+
     <EditText
+
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:id="@+id/et_chang_context"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/edittext_bg_dark"
+        android:hint="请填写个性签名" />
 
     <Button
         android:id="@+id/bt_commit"
-        android:text="确定"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="150dp"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/bg_confirmbt_noshadow"
+        android:text="确定"
+        android:textColor="#fff"
+        android:textStyle="bold" />
 
 </LinearLayout>

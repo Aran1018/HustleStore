@@ -4,10 +4,7 @@
     android:id="@+id/activiaty_splash"
     android:layout_width="match_parent"
     android:gravity="center"
+    android:background="@drawable/bg_splash"
     android:layout_height="match_parent">
 
-<ImageView
-    android:src="@drawable/bg_splash"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
 </RelativeLayout>

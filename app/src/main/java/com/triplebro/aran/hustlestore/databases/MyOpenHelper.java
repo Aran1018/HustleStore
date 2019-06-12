@@ -78,6 +78,20 @@ public class MyOpenHelper extends SQLiteOpenHelper {
             "admin_password varchar(20)" +
             ")";
 
+    private static final String CREATE_TABLE_USEDORDER = "" +
+            "create table UsedOrder(" +
+            "order_id integer primary key autoincrement," +
+            "seller_id VARCHAR(300)," +
+            "buyer_id VARCHAR(300)," +
+            "goods_id VARCHAR(50)," +
+            "order_date VARCHAR(200)," +
+            "goods_name VARCHAR(200)," +
+            "goodsImg_mainpath VARCHAR(200)," +
+            "goods_price VARCHAR(20)," +
+            "FOREIGN KEY (buyer_id) REFERENCES userInfo(user_id)," +
+            "FOREIGN KEY (seller_id) REFERENCES userInfo(user_id)" +
+            ")";
+
     public MyOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -92,6 +106,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_PUBLISHCONTENT);
         db.execSQL(CREATE_TABLE_COMMENTS);
         db.execSQL(CREATE_TABLE_ADMINISTRATOR);
+        db.execSQL(CREATE_TABLE_USEDORDER);
 
     }
 

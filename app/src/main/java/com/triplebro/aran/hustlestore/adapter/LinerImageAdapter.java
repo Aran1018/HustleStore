@@ -46,7 +46,7 @@ public class LinerImageAdapter {
      *
      */
     public void bindData(){
-        if (!imageViews.isEmpty()&&!trafficDataList.isEmpty()){
+        if (imageViews.size()>=5&&trafficDataList.size()>=5){
             for (int index=0;index<imageViews.size();index++){
                 Glide.with(context).load(trafficDataList.get(index).getPath()).bitmapTransform(new CropSquareTransformation(context)).into(imageViews.get(index));
                 sendData(imageViews.get(index),trafficDataList.get(index));
